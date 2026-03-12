@@ -1,1 +1,22 @@
+# IDE
 /.idea/
+
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# astro
+.astro/
+
+# claude code
+.claude/
+
+# environment variables
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db

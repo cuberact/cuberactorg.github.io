@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GodotEmbed from '../../components/GodotEmbed.astro';
+---
+
+<BaseLayout title="cuberact-library — Cuberact" description="A growing collection of GDExtension components for Godot 4.5+. Currently includes CRope2D — 2D rope physics with modular architecture.">
+  <section class="max-w-3xl mx-auto px-4 py-16 md:py-24">
+    <h1 class="text-3xl md:text-4xl text-white mb-4">cuberact-library</h1>
+    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-8">GDExtension for Godot 4.5+</p>
+
+    <div class="prose prose-invert prose-gray max-w-none mb-12">
+      <p>
+        A growing collection of GDExtension components for Godot 4.5+.
+        Check the installed version at runtime: <code>CuberactLib.get_version()</code>
+      </p>
+
+      <h2>Supported Platforms</h2>
+      <div class="not-prose flex flex-wrap gap-3 mb-6">
+        <span class="px-3 py-1 text-xs rounded bg-surface-600 text-gray-300">macOS (universal)</span>
+        <span class="px-3 py-1 text-xs rounded bg-surface-600 text-gray-300">Windows (x86_64, arm64)</span>
+        <span class="px-3 py-1 text-xs rounded bg-surface-600 text-gray-300">Linux (x86_64, arm64)</span>
+        <span class="px-3 py-1 text-xs rounded bg-surface-600 text-gray-300">Web (wasm32)</span>
+      </div>
+
+      <h2>Installation</h2>
+      <p><strong>Option A — Godot Asset Library</strong><br>
+        Install directly from the Godot editor's AssetLib tab.</p>
+      <p><strong>Option B — GitHub Release</strong><br>
+        Download the latest ZIP from <a href="https://github.com/cuberact/godot-cuberact-library/releases/latest">Releases</a>,
+        extract <code>cuberact-library/</code> into your project's <code>addons/</code> folder, reopen in Godot.</p>
+      <p><strong>Option C — Clone the full repository</strong></p>
+      <pre><code>git clone https://github.com/cuberact/godot-cuberact-library.git</code></pre>
+
+      <h2>Links</h2>
+      <ul>
+        <li><a href="https://x.com/cuberact">X / Twitter</a> — news and updates</li>
+        <li><a href="https://github.com/cuberact/godot-cuberact-library">GitHub Repository</a></li>
+        <li><a href="https://cuberact.itch.io/cuberact-library">itch.io Page</a></li>
+        <li><a href="https://www.youtube.com/@Cuberact">YouTube Channel</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CRope2D -->
+  <section id="crope2d" class="max-w-3xl mx-auto px-4 pb-16">
+    <h2 class="text-2xl md:text-3xl text-white mb-4">CRope2D</h2>
+    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-8">2D Rope Physics Simulation</p>
+
+    <div class="prose prose-invert prose-gray max-w-none mb-12">
+      <p>
+        2D rope physics simulation built on Verlet integration. Supports collisions,
+        anchoring, and a <strong>modular system</strong> for forces, rendering, line processing, and breaking.
+      </p>
+
+      <pre><code>CRope2D (Node2D)
+├── data: CRopeData              — point positions, segment length
+├── anchors: CRopeAnchor[]       — attach rope points to nodes
+├── force_modules: CRopeForceMod[]   — gravity, wind, magnets, custom
+├── line_modules: CRopeLineMod[]     — smooth, simplify, subdivide, custom
+├── break_modules: CRopeBreakMod[]   — tension break, custom
+└── render_modules: CRopeRenderMod[] — direct, Line2D, debug, custom</code></pre>
+
+      <h3>Key Features</h3>
+      <ul>
+        <li>Verlet integration with configurable stiffness and damping</li>
+        <li>Collision support (StaticBody2D, RigidBody2D, CharacterBody2D)</li>
+        <li>Anchor system with two-way physical interaction on RigidBody2D</li>
+        <li>Modular architecture — forces, line processing, breaking, and rendering are all interchangeable modules</li>
+        <li>Custom modules in GDScript — no C++ required</li>
+        <li>Debug probe for performance profiling</li>
+      </ul>
+
+      <h3>Built-in Modules</h3>
+    </div>
+
+    <!-- Module grid -->
+    <div class="grid md:grid-cols-2 gap-4 mb-12">
+      <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
+        <h4 class="text-white text-sm font-medium mb-2">Force Modules</h4>
+        <ul class="text-gray-400 text-sm space-y-1">
+          <li><code class="text-brand-blue-light">CRopeGravityForceMod</code> — constant gravity</li>
+          <li><code class="text-brand-blue-light">CRopeWindForceMod</code> — oscillating wind</li>
+          <li><code class="text-brand-blue-light">CRopeMagnetForceMod</code> — attract/repel toward a node</li>
+        </ul>
+      </div>
+      <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
+        <h4 class="text-white text-sm font-medium mb-2">Line Modules</h4>
+        <ul class="text-gray-400 text-sm space-y-1">
+          <li><code class="text-brand-blue-light">CRopeSmoothLineMod</code> — Laplacian smoothing</li>
+          <li><code class="text-brand-blue-light">CRopeSimplifyLineMod</code> — Ramer-Douglas-Peucker</li>
+          <li><code class="text-brand-blue-light">CRopeSubdivideLineMod</code> — Chaikin subdivision</li>
+        </ul>
+      </div>
+      <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
+        <h4 class="text-white text-sm font-medium mb-2">Render Modules</h4>
+        <ul class="text-gray-400 text-sm space-y-1">
+          <li><code class="text-brand-blue-light">CRopeDirectRenderMod</code> — lightweight canvas draw</li>
+          <li><code class="text-brand-blue-light">CRopeLine2DRenderMod</code> — Line2D with gradient & material</li>
+          <li><code class="text-brand-blue-light">CRopeDebugRenderMod</code> — tension, forces, velocity overlay</li>
+        </ul>
+      </div>
+      <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
+        <h4 class="text-white text-sm font-medium mb-2">Break Modules</h4>
+        <ul class="text-gray-400 text-sm space-y-1">
+          <li><code class="text-brand-blue-light">CRopeTensionBreakMod</code> — breaks when stretch exceeds threshold</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-gray max-w-none mb-12">
+      <h3>API Reference</h3>
+      <p>Full documentation of all properties, methods, and signals is available in the
+        <a href="https://github.com/cuberact/godot-cuberact-library/blob/main/CROPE2D.md">CRope2D API Reference</a>
+        on GitHub. The same documentation is also built into Godot's editor help system.</p>
+
+      <h3>14 Example Scenes</h3>
+      <p>Each example demonstrates specific features — stiffness & damping, gravity, magnets, simplify/subdivide,
+        custom GDScript render modules, debug overlay, rope breaking, pendulum, collisions, playground,
+        grappling hook, stress test, and a boulder network.</p>
+
+      <details>
+        <summary class="cursor-pointer text-brand-blue-light hover:text-white transition-colors">Controls</summary>
+        <table>
+          <thead><tr><th>Input</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>LMB / RMB</td><td>Drag physics bodies or anchors</td></tr>
+            <tr><td>MMB drag</td><td>Pan camera</td></tr>
+            <tr><td>MMB click</td><td>Toggle boulder gravity</td></tr>
+            <tr><td>Mouse wheel</td><td>Zoom camera</td></tr>
+            <tr><td>R</td><td>Reset camera</td></tr>
+            <tr><td>F1</td><td>Show/hide controls overlay</td></tr>
+            <tr><td>F2</td><td>Show/hide FPS and debug probe</td></tr>
+            <tr><td>ESC</td><td>Back to launcher</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </div>
+  </section>
+
+  <!-- Interactive demo — wider container for the 1:1 embed -->
+  <section id="demo" class="max-w-5xl mx-auto px-4 pb-16">
+    <h2 class="text-2xl text-white mb-6">Try it in your browser</h2>
+    <p class="text-gray-400 mb-8 text-sm">
+      All 14 example scenes running directly in the browser via Godot's web export.
+    </p>
+
+    <div class="flex justify-center">
+      <GodotEmbed
+        src="/godot-demos/crope2d-examples/index.html"
+        title="CRope2D Examples"
+        width={1000}
+        height={1000}
+      />
+    </div>
+  </section>
+
+  <!-- License -->
+  <section class="max-w-3xl mx-auto px-4 pb-24">
+    <div class="prose prose-invert prose-gray max-w-none">
+      <h2>License</h2>
+      <p>
+        Free for learning, prototyping, and game jams. A paid license is required when you publish a game.
+        See <a href="https://github.com/cuberact/godot-cuberact-library/blob/main/addons/cuberact-library/LICENSE.md">LICENSE.md</a> for full terms.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GodotEmbed from '../components/GodotEmbed.astro';
+---
+
+<BaseLayout title="Interactive Demos — Cuberact" description="Try Cuberact components directly in your browser. No download needed.">
+  <section class="max-w-3xl mx-auto px-4 py-16 md:py-24 text-center">
+    <h1 class="text-3xl md:text-4xl text-white mb-4">Interactive Demos</h1>
+    <p class="text-gray-400 max-w-2xl mx-auto">
+      Try Cuberact components directly in your browser. No download needed.
+    </p>
+  </section>
+
+  <!-- CRope2D Demo -->
+  <section class="max-w-5xl mx-auto px-4 pb-24">
+    <div class="mb-6">
+      <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-1">cuberact-library</p>
+      <h2 class="text-2xl text-white mb-2">CRope2D — 14 Example Scenes</h2>
+      <p class="text-gray-400 text-sm">
+        Collisions, grappling hooks, rope breaking, stress tests, and more — all running via Godot's web export.
+      </p>
+    </div>
+
+    <details class="mb-6">
+      <summary class="cursor-pointer text-brand-blue-light hover:text-white text-sm transition-colors">Controls</summary>
+      <div class="prose prose-invert prose-gray max-w-none mt-2">
+        <table>
+          <thead><tr><th>Input</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>LMB / RMB</td><td>Drag physics bodies or anchors</td></tr>
+            <tr><td>MMB drag</td><td>Pan camera</td></tr>
+            <tr><td>MMB click</td><td>Toggle boulder gravity</td></tr>
+            <tr><td>Mouse wheel</td><td>Zoom camera</td></tr>
+            <tr><td>R</td><td>Reset camera</td></tr>
+            <tr><td>F1</td><td>Show/hide controls overlay</td></tr>
+            <tr><td>F2</td><td>Show/hide FPS and debug probe</td></tr>
+            <tr><td>ESC</td><td>Back to launcher</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <div class="flex justify-center">
+      <GodotEmbed
+        src="/godot-demos/crope2d-examples/index.html"
+        title="CRope2D Examples"
+        width={1000}
+        height={1000}
+      />
+    </div>
+
+    <div class="text-center mt-6">
+      <a
+        href="/projects/cuberact-library/#crope2d"
+        class="text-brand-blue-light hover:text-white text-sm uppercase tracking-widest transition-colors"
+      >
+        Learn more about CRope2D &rarr;
+      </a>
+    </div>
+  </section>
+</BaseLayout>

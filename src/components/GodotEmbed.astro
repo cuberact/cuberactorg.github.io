@@ -1,0 +1,52 @@
+---
+interface Props {
+  src: string;
+  title: string;
+  width?: number;
+  height?: number;
+}
+
+const { src, title, width = 800, height = 600 } = Astro.props;
+const aspectRatio = `${width} / ${height}`;
+---
+
+<div class="godot-embed w-full rounded-lg overflow-hidden border border-surface-600 bg-surface-800" style={`max-width: ${width}px;`}>
+  <div
+    class="relative w-full"
+    style={`aspect-ratio: ${aspectRatio};`}
+  >
+    <!-- Play button overlay — click to load the iframe -->
+    <button
+      class="godot-play absolute inset-0 flex flex-col items-center justify-center gap-4 bg-surface-900/80 hover:bg-surface-900/60 transition-colors cursor-pointer z-10"
+      aria-label={`Launch ${title}`}
+    >
+      <svg class="w-16 h-16 text-brand-blue-light" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+      <span class="text-sm text-gray-400 uppercase tracking-widest">Launch interactive demo</span>
+    </button>
+
+    <!-- Iframe (loaded on click) -->
+    <iframe
+      data-src={src}
+      title={title}
+      class="godot-iframe w-full h-full absolute inset-0 hidden"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div class="px-4 py-2 text-sm text-gray-500">{title}</div>
+</div>
+
+<script>
+  document.querySelectorAll('.godot-embed').forEach((embed) => {
+    const btn = embed.querySelector('.godot-play');
+    const iframe = embed.querySelector('.godot-iframe') as HTMLIFrameElement | null;
+    btn?.addEventListener('click', () => {
+      if (iframe && iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+        iframe.classList.remove('hidden');
+        btn.classList.add('hidden');
+      }
+    });
+  });
+</script>

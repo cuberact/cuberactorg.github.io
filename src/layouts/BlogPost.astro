@@ -1,0 +1,43 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags?: string[];
+}
+
+const { title, description, date, tags = [] } = Astro.props;
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} — Cuberact`} description={description}>
+  <article class="max-w-3xl mx-auto px-4 py-16 md:py-24">
+    <header class="mb-10">
+      <time class="text-sm text-gray-500 uppercase tracking-widest">{formattedDate}</time>
+      <h1 class="text-3xl md:text-4xl text-white mt-2 mb-4">{title}</h1>
+      {tags.length > 0 && (
+        <div class="flex gap-2">
+          {tags.map((tag) => (
+            <span class="text-xs px-2 py-1 rounded bg-surface-600 text-gray-400">{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="prose prose-invert prose-gray max-w-none">
+      <slot />
+    </div>
+
+    <footer class="mt-16 pt-8 border-t border-surface-600">
+      <a href="/blog/" class="text-sm text-gray-400 hover:text-white transition-colors">
+        &larr; Back to blog
+      </a>
+    </footer>
+  </article>
+</BaseLayout>

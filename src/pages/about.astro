@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About — Cuberact" description="Cuberact is a solo indie studio by Michal Nikodím, building games and tools for Godot Engine.">
+  <section class="max-w-3xl mx-auto px-4 py-16 md:py-24">
+
+    <!-- Intro with photo -->
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 mb-12">
+      <img
+        src="/images/michal-nikodim.jpg"
+        alt="Michal Nikodím"
+        width="160"
+        height="160"
+        class="rounded-full border-2 border-surface-600 object-cover w-40 h-40 flex-shrink-0"
+      />
+      <div>
+        <h1 class="text-3xl md:text-4xl text-white mb-2">Michal Nikodím <span class="text-gray-500 font-light">aka NkD</span></h1>
+        <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-4">Cuberact</p>
+        <p class="text-gray-400">
+          I'm a solo developer building games and tools for the
+          <strong class="text-white">Godot Engine</strong>. Cuberact is my indie brand — a place
+          where I build things I wish existed, and share them with other developers along the way.
+        </p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-gray max-w-none">
+
+      <h2>What I'm working on</h2>
+      <p>
+        My first release is <a href="/projects/cuberact-library/">cuberact-library</a> — a GDExtension
+        that started with <strong>CRope2D</strong>, a 2D rope physics component built on Verlet integration.
+        It handles collisions, anchoring, breaking, and comes with a modular architecture so you can
+        plug in custom forces, renderers, and line processors — all from GDScript, no C++ needed.
+      </p>
+      <p>
+        The library is free to use for learning, prototyping, and jams. You only need a paid license
+        if you ship a published game with it.
+      </p>
+      <p>
+        I'm also working on a game — it's why the rope library exists in the first place. I'm building
+        the tools I need for my own game, and releasing them for everyone.
+      </p>
+
+      <h2>Why Godot</h2>
+      <p>
+        Godot is open, lightweight, and gets out of my way. The GDExtension system lets me write
+        performance-critical physics in C++ and expose it as native Godot nodes — the best of both
+        worlds.
+      </p>
+
+      <h2>Links</h2>
+      <ul>
+        <li><a href="https://x.com/cuberact">X / Twitter</a> — news and updates</li>
+        <li><a href="https://github.com/cuberact/godot-cuberact-library">GitHub</a> — examples, docs, releases</li>
+        <li><a href="https://www.youtube.com/@Cuberact">YouTube (Cuberact)</a> — devlogs and demos</li>
+        <li><a href="https://www.youtube.com/@MichalNikod%C3%ADm">YouTube (personal)</a> — older dev videos</li>
+        <li><a href="https://cuberact.itch.io/cuberact-library">itch.io</a> — downloads</li>
+        <li><a href="https://ko-fi.com/cuberact">Ko-fi</a> — support the project</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

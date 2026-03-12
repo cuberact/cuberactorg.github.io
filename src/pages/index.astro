@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Cuberact">
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-4 py-24 md:py-32 text-center">
+    <img
+      src="/images/cuberact-logo-512.png"
+      alt="Cuberact logo"
+      width="160"
+      height="160"
+      class="mx-auto mb-6"
+    />
+    <img
+      src="/images/cuberact-text-512.png"
+      alt="CUBERACT"
+      width="320"
+      class="mx-auto mb-8"
+    />
+    <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12">
+      Indie studio making games, tools, and extensions.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href="/projects/"
+        class="inline-block px-6 py-3 bg-brand-blue text-white text-sm uppercase tracking-widest rounded hover:brightness-110 transition"
+      >
+        Projects
+      </a>
+      <a
+        href="/blog/"
+        class="inline-block px-6 py-3 border border-surface-600 text-gray-300 text-sm uppercase tracking-widest rounded hover:border-brand-blue-light hover:text-white transition-colors"
+      >
+        Dev Blog
+      </a>
+    </div>
+  </section>
+
+  <!-- Spotlight: Latest Release -->
+  <section class="max-w-5xl mx-auto px-4 pb-24">
+    <p class="text-brand-blue-light text-sm uppercase tracking-widest text-center mb-2">Latest Release</p>
+    <h2 class="text-2xl text-white mb-8 text-center">
+      cuberact-library
+      <span class="text-brand-blue-light text-sm uppercase tracking-widest">v1.0.0</span>
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <a href="/projects/cuberact-library/#crope2d" class="bg-surface-800 rounded-lg p-6 border border-surface-600 hover:border-brand-blue-light transition-colors block">
+        <h3 class="text-white text-lg mb-2">CRope2D</h3>
+        <p class="text-gray-400 text-sm">
+          2D rope physics on Verlet integration. Collisions, anchoring, breaking, and a fully modular architecture for forces, rendering, and line processing.
+        </p>
+      </a>
+      <div class="bg-surface-800 rounded-lg p-6 border border-surface-600">
+        <h3 class="text-white text-lg mb-2">Modular Design</h3>
+        <p class="text-gray-400 text-sm">
+          Forces, rendering, line processing, and breaking are all interchangeable modules. Write custom modules in GDScript — no C++ required.
+        </p>
+      </div>
+      <div class="bg-surface-800 rounded-lg p-6 border border-surface-600">
+        <h3 class="text-white text-lg mb-2">Cross-platform</h3>
+        <p class="text-gray-400 text-sm">
+          macOS, Windows, Linux, and Web. GDExtension for Godot 4.5+ with 14 example scenes included.
+        </p>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a
+        href="/projects/cuberact-library/"
+        class="text-brand-blue-light hover:text-white text-sm uppercase tracking-widest transition-colors"
+      >
+        Learn more &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Try it in your browser -->
+  <section class="max-w-5xl mx-auto px-4 pb-24 text-center">
+    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-2">Interactive Demo</p>
+    <h2 class="text-2xl text-white mb-4">Try it in your browser</h2>
+    <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+      14 interactive example scenes — collisions, grappling hooks, rope breaking, stress tests, and more. Runs directly in the browser, no download needed.
+    </p>
+    <a href="/demo/" class="group block max-w-md mx-auto mb-6">
+      <img
+        src="/images/e11-playground.png"
+        alt="CRope2D playground — ropes, collisions, and physics in action"
+        class="rounded-lg border border-surface-600 group-hover:border-brand-blue-light transition-colors"
+        width="600"
+        height="600"
+      />
+    </a>
+    <a
+      href="/demo/"
+      class="inline-block px-6 py-3 bg-brand-blue text-white text-sm uppercase tracking-widest rounded hover:brightness-110 transition"
+    >
+      Launch Examples &rarr;
+    </a>
+  </section>
+</BaseLayout>
