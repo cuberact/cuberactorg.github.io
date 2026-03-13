@@ -55,6 +55,12 @@ And that's the end of the story. We're at now. And I'm off to work on the game. 
 
 ---
 
+Watch the evolution of CRope2D — from the very first prototype to what it is today:
+
+<div style="position: relative; width: 100%; padding-bottom: 56.25%; margin: 1.5em 0;">
+  <iframe src="https://www.youtube.com/embed/geAj2Lzszkc" title="CRope2D Evolution" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 6px;"></iframe>
+</div>
+
 Here's a glimpse of CRope2D in action — a few of the 14 example scenes included in the library:
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 1.5em 0;">
