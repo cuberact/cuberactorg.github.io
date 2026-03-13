@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import GodotEmbed from '../../components/GodotEmbed.astro';
 ---
 
 <BaseLayout title="cuberact-library — Cuberact" description="A growing collection of GDExtension components for Godot 4.5+. Currently includes CRope2D — 2D rope physics with modular architecture.">
@@ -137,21 +136,18 @@ import GodotEmbed from '../../components/GodotEmbed.astro';
     </div>
   </section>
 
-  <!-- Interactive demo — wider container for the 1:1 embed -->
-  <section id="demo" class="max-w-5xl mx-auto px-4 pb-16">
-    <h2 class="text-2xl text-white mb-6">Try it in your browser</h2>
-    <p class="text-gray-400 mb-8 text-sm">
+  <!-- Interactive demo — link to dedicated demo page -->
+  <section id="demo" class="max-w-3xl mx-auto px-4 pb-16 text-center">
+    <h2 class="text-2xl text-white mb-4">Try it in your browser</h2>
+    <p class="text-gray-400 mb-6 text-sm">
       All 14 example scenes running directly in the browser via Godot's web export.
     </p>
-
-    <div class="flex justify-center">
-      <GodotEmbed
-        src="/godot-demos/crope2d-examples/index.html"
-        title="CRope2D Examples"
-        width={1000}
-        height={1000}
-      />
-    </div>
+    <a
+      href="/demo/"
+      class="inline-block px-6 py-3 bg-brand-blue text-white text-sm uppercase tracking-widest rounded hover:brightness-110 transition"
+    >
+      Launch Examples &rarr;
+    </a>
   </section>
 
   <!-- License -->
