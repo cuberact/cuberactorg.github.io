@@ -23,6 +23,11 @@
     @apply transition-colors;
   }
 
+  ::selection {
+    background-color: #3b82f6;
+    color: #ffffff;
+  }
+
   .prose a {
     @apply text-brand-blue-light hover:text-white;
   }
