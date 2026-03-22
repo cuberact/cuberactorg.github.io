@@ -9,6 +9,12 @@ const projects = [
     tag: 'GDExtension',
     version: 'v1.0.0',
   },
+  {
+    title: 'Planet Chunked LOD',
+    href: '/projects/planet-chunked-lod/',
+    description: 'Procedurally generated planet with dynamic level-of-detail, written entirely in GDScript for Godot 4.6. A learning resource — from orbit to the surface.',
+    tag: 'GDScript · Open Source',
+  },
 ];
 ---
 
@@ -25,7 +31,7 @@ const projects = [
         >
           <div class="flex items-start justify-between mb-3">
             <h2 class="text-white text-xl group-hover:text-brand-blue-light transition-colors">{title}</h2>
-            <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light">{version}</span>
+            {version && <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light">{version}</span>}
           </div>
           <span class="inline-block px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300 mb-3">{tag}</span>
           <p class="text-gray-400 text-sm">{description}</p>

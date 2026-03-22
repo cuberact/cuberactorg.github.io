@@ -1,5 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    title: 'cuberact-library',
+    tag: 'GDExtension',
+    version: 'v1.0.0',
+    image: '/images/crope2d.jpg',
+    imageAlt: 'CRope2D playground — ropes, collisions, and physics in action',
+    description: '2D rope physics for Godot 4.5+. Verlet integration, collisions, anchoring, breaking, and a fully modular architecture. 14 example scenes included.',
+    demoHref: '/demo/crope2d/',
+    projectHref: '/projects/cuberact-library/',
+  },
+  {
+    title: 'Planet Chunked LOD',
+    tag: 'GDScript · Open Source',
+    image: '/images/planet.jpg',
+    imageAlt: 'Procedurally generated planet from orbit with atmosphere',
+    description: 'Procedurally generated planet with dynamic level-of-detail, written entirely in GDScript for Godot 4.6. Fly from orbit to the surface — the mesh adapts continuously.',
+    demoHref: '/demo/planet-chunked-lod/',
+    projectHref: '/projects/planet-chunked-lod/',
+  },
+];
 ---
 
 <BaseLayout title="Cuberact">
@@ -21,88 +43,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-4">
       Indie studio making games, tools, and extensions.
     </p>
-    <p class="text-base text-gray-500 max-w-2xl mx-auto mb-12">
-      I'm building a growing collection of game components for Godot Engine.
-      The first release is <strong class="text-gray-300">cuberact-library</strong> with
-      <strong class="text-gray-300">CRope2D</strong> — a fast, modular 2D rope physics system.
-      I'm also working on my own game using these tools. Stay tuned.
+    <p class="text-base text-gray-500 max-w-2xl mx-auto">
+      I'm building tools and games with Godot Engine — from physics extensions to procedural planets.
+      Everything here is made to be useful, playable, and open to learn from.
     </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a
-        href="/projects/"
-        class="inline-block px-6 py-3 bg-brand-blue text-white text-sm uppercase tracking-widest rounded hover:brightness-110 transition"
-      >
-        Projects
-      </a>
-      <a
-        href="/blog/"
-        class="inline-block px-6 py-3 border border-surface-600 text-gray-300 text-sm uppercase tracking-widest rounded hover:border-brand-blue-light hover:text-white transition-colors"
-      >
-        Dev Blog
-      </a>
-    </div>
   </section>
 
-  <!-- Spotlight: Latest Release -->
+  <!-- Projects -->
   <section class="max-w-5xl mx-auto px-4 pb-24">
-    <p class="text-brand-blue-light text-sm uppercase tracking-widest text-center mb-2">Latest Release</p>
-    <h2 class="text-2xl text-white mb-8 text-center">
-      cuberact-library
-      <span class="text-brand-blue-light text-sm uppercase tracking-widest">v1.0.0</span>
-    </h2>
+    <p class="text-brand-blue-light text-sm uppercase tracking-widest text-center mb-10">News</p>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <a href="/projects/cuberact-library/#crope2d" class="bg-surface-800 rounded-lg p-6 border border-surface-600 hover:border-brand-blue-light transition-colors block">
-        <h3 class="text-white text-lg mb-2">CRope2D</h3>
-        <p class="text-gray-400 text-sm">
-          2D rope physics on Verlet integration. Collisions, anchoring, breaking, and a fully modular architecture for forces, rendering, and line processing.
-        </p>
-      </a>
-      <div class="bg-surface-800 rounded-lg p-6 border border-surface-600">
-        <h3 class="text-white text-lg mb-2">Modular Design</h3>
-        <p class="text-gray-400 text-sm">
-          Forces, rendering, line processing, and breaking are all interchangeable modules. Write custom modules in GDScript — no C++ required.
-        </p>
-      </div>
-      <div class="bg-surface-800 rounded-lg p-6 border border-surface-600">
-        <h3 class="text-white text-lg mb-2">Cross-platform</h3>
-        <p class="text-gray-400 text-sm">
-          macOS, Windows, Linux, and Web. GDExtension for Godot 4.5+ with 14 example scenes included.
-        </p>
-      </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      {projects.map(({ title, tag, version, image, imageAlt, description, demoHref, projectHref }) => (
+        <div class="bg-surface-800 rounded-lg border border-surface-600 overflow-hidden">
+          <a href={projectHref} class="block group">
+            <img
+              src={image}
+              alt={imageAlt}
+              class="w-full aspect-video object-cover group-hover:brightness-110 transition"
+            />
+          </a>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-white text-lg">{title}</h3>
+              {version && <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light shrink-0 ml-2">{version}</span>}
+            </div>
+            <span class="inline-block px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300 mb-3">{tag}</span>
+            <p class="text-gray-400 text-sm mb-4">{description}</p>
+            <div class="flex gap-4">
+              <a
+                href={demoHref}
+                class="inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded hover:brightness-110 transition"
+              >
+                Try demo &rarr;
+              </a>
+              <a
+                href={projectHref}
+                class="text-brand-blue-light hover:text-white text-xs uppercase tracking-widest transition-colors self-center"
+              >
+                Learn more &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
-
-    <div class="text-center mt-8">
-      <a
-        href="/projects/cuberact-library/"
-        class="text-brand-blue-light hover:text-white text-sm uppercase tracking-widest transition-colors"
-      >
-        Learn more &rarr;
-      </a>
-    </div>
-  </section>
-
-  <!-- Try it in your browser -->
-  <section class="max-w-5xl mx-auto px-4 pb-24 text-center">
-    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-2">Interactive Demo</p>
-    <h2 class="text-2xl text-white mb-4">Try it in your browser</h2>
-    <p class="text-gray-400 max-w-2xl mx-auto mb-8">
-      14 interactive example scenes — collisions, grappling hooks, rope breaking, stress tests, and more. Runs directly in the browser, no download needed.
-    </p>
-    <a href="/demo/" class="group block max-w-md mx-auto mb-6">
-      <img
-        src="/images/e11-playground.png"
-        alt="CRope2D playground — ropes, collisions, and physics in action"
-        class="rounded-lg border border-surface-600 group-hover:border-brand-blue-light transition-colors"
-        width="600"
-        height="600"
-      />
-    </a>
-    <a
-      href="/demo/"
-      class="inline-block px-6 py-3 bg-brand-blue text-white text-sm uppercase tracking-widest rounded hover:brightness-110 transition"
-    >
-      Launch Examples &rarr;
-    </a>
   </section>
 </BaseLayout>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const demos = [
+  {
+    title: 'CRope2D — 14 Example Scenes',
+    subtitle: 'cuberact-library',
+    image: '/images/e11-playground.png',
+    imageAlt: 'CRope2D playground — ropes, collisions, and physics in action',
+    description: 'Collisions, grappling hooks, rope breaking, stress tests, and more — all running via Godot\'s web export.',
+    href: '/demo/crope2d/',
+  },
+  {
+    title: 'Planet Chunked LOD',
+    subtitle: 'Procedural planet',
+    image: '/images/planet.jpg',
+    imageAlt: 'Procedurally generated planet from orbit with atmosphere',
+    description: 'Fly from orbit down to the surface of a procedurally generated planet. Dynamic level-of-detail, atmosphere, day/night cycle.',
+    href: '/demo/planet-chunked-lod/',
+  },
+];
+---
+
+<BaseLayout title="Interactive Demos — Cuberact" description="Try Cuberact projects directly in your browser. No download needed.">
+  <section class="max-w-5xl mx-auto px-4 py-16 md:py-24">
+    <h1 class="text-3xl md:text-4xl text-white mb-4 text-center">Interactive Demos</h1>
+    <p class="text-gray-400 max-w-2xl mx-auto text-center mb-12">
+      Try Cuberact projects directly in your browser. No download needed.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {demos.map(({ title, subtitle, image, imageAlt, description, href }) => (
+        <a
+          href={href}
+          class="bg-surface-800 rounded-lg border border-surface-600 overflow-hidden group hover:border-brand-blue-light transition-colors block"
+        >
+          <img
+            src={image}
+            alt={imageAlt}
+            class="w-full aspect-video object-cover group-hover:brightness-110 transition"
+          />
+          <div class="p-6">
+            <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-1">{subtitle}</p>
+            <h2 class="text-white text-lg mb-2 group-hover:text-brand-blue-light transition-colors">{title}</h2>
+            <p class="text-gray-400 text-sm mb-4">{description}</p>
+            <span class="text-brand-blue-light text-xs uppercase tracking-widest">
+              Launch demo &rarr;
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
