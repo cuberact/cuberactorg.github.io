@@ -1,17 +1,45 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { socials, itchioPath } from '../../data/socials';
+
+const iconPath = (label: string) => socials.find((s) => s.label === label)?.path;
+const links = [
+  { href: 'https://github.com/cuberact/godot-cuberact-library', label: 'GitHub', path: iconPath('GitHub'), primary: true },
+  { href: 'https://cuberact.itch.io/cuberact-library', label: 'itch.io', path: itchioPath },
+  { href: 'https://www.youtube.com/@Cuberact', label: 'YouTube', path: iconPath('YouTube') },
+  { href: 'https://x.com/cuberact', label: 'X / Twitter', path: iconPath('X / Twitter') },
+];
 ---
 
-<BaseLayout title="cuberact-library — Cuberact" description="A growing collection of GDExtension components for Godot 4.5+. Currently includes CRope2D — 2D rope physics with modular architecture.">
-  <section class="max-w-3xl mx-auto px-4 py-16 md:py-24">
+<BaseLayout title="cuberact-library - Cuberact" description="A growing collection of GDExtension components for Godot 4.5+. Currently includes CRope2D - 2D rope physics with modular architecture.">
+  <section class="max-w-3xl mx-auto px-4 pt-10 md:pt-12 pb-12 md:pb-16">
     <h1 class="text-3xl md:text-4xl text-white mb-4">cuberact-library</h1>
-    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-8">GDExtension for Godot 4.5+</p>
+    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-4">GDExtension for Godot 4.5+</p>
+
+    <div class="flex flex-wrap gap-2 mb-8">
+      <span class="px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300">GDExtension</span>
+      <span class="px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300">GDScript</span>
+      <span class="px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300">Open Source Examples</span>
+      <span class="px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300">Godot 4.5+</span>
+    </div>
 
     <div class="prose prose-invert prose-gray max-w-none mb-12">
       <p>
         A growing collection of GDExtension components for Godot 4.5+.
         Check the installed version at runtime: <code>CuberactLib.get_version()</code>
       </p>
+
+      <div class="not-prose bg-surface-800 rounded-lg border border-surface-600 p-5 my-8">
+        <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-3">New in v1.1.0</p>
+        <ul class="text-gray-400 text-sm space-y-1.5 list-disc pl-5">
+          <li>Sleep system: settled ropes skip simulation and run only a cheap watchdog, a big saving for scenes full of ropes.</li>
+          <li>Red-black constraint solver (now the default): up to 10x faster substeps on long ropes.</li>
+          <li><code class="text-brand-blue-light">CRopeWorldGravityForceMod</code>: follows your project's 2D gravity, including runtime changes.</li>
+          <li>Gradient coloring on the direct renderer.</li>
+          <li>Six new showcase scenes, for 17 in total.</li>
+        </ul>
+        <a href="#changelog" class="inline-block mt-4 text-brand-blue-light hover:text-white text-xs uppercase tracking-widest transition-colors">Full changelog &rarr;</a>
+      </div>
 
       <h2>Supported Platforms</h2>
       <div class="not-prose flex flex-wrap gap-3 mb-6">
@@ -22,21 +50,31 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
 
       <h2>Installation</h2>
-      <p><strong>Option A — Godot Asset Library</strong><br>
+      <p><strong>Option A - Godot Asset Library</strong><br>
         Install directly from the Godot editor's AssetLib tab.</p>
-      <p><strong>Option B — GitHub Release</strong><br>
+      <p><strong>Option B - GitHub Release</strong><br>
         Download the latest ZIP from <a href="https://github.com/cuberact/godot-cuberact-library/releases/latest">Releases</a>,
         extract <code>cuberact-library/</code> into your project's <code>addons/</code> folder, reopen in Godot.</p>
-      <p><strong>Option C — Clone the full repository</strong></p>
+      <p><strong>Option C - Clone the full repository</strong></p>
       <pre><code>git clone https://github.com/cuberact/godot-cuberact-library.git</code></pre>
 
       <h2>Links</h2>
-      <ul>
-        <li><a href="https://x.com/cuberact">X / Twitter</a> — news and updates</li>
-        <li><a href="https://github.com/cuberact/godot-cuberact-library">GitHub Repository</a></li>
-        <li><a href="https://cuberact.itch.io/cuberact-library">itch.io Page</a></li>
-        <li><a href="https://www.youtube.com/@Cuberact">YouTube Channel</a></li>
-      </ul>
+      <div class="not-prose flex flex-wrap gap-3">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class:list={[
+              'inline-flex items-center gap-2 px-4 py-2 rounded text-sm transition',
+              l.primary
+                ? 'bg-brand-blue text-white hover:brightness-110'
+                : 'bg-surface-800 border border-surface-600 text-gray-300 hover:border-brand-blue-light hover:text-white',
+            ]}
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d={l.path} /></svg>
+            {l.label}
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -46,8 +84,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-8">2D Rope Physics Simulation</p>
 
     <img
-      src="/images/crope2d.jpg"
-      alt="CRope2D playground example — ropes, pendulums, and physics bodies"
+      src="/images/cuberact-library-examples/e01-jellyfish-hero.jpg"
+      alt="CRope2D jellyfish scene - bioluminescent bells drifting over a seagrass meadow"
+      width="1920"
+      height="1080"
       class="w-full rounded-lg mb-10"
     />
 
@@ -58,20 +98,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
 
       <pre><code>CRope2D (Node2D)
-├── data: CRopeData              — point positions, segment length
-├── anchors: CRopeAnchor[]       — attach rope points to nodes
-├── force_modules: CRopeForceMod[]   — gravity, wind, magnets, custom
-├── line_modules: CRopeLineMod[]     — smooth, simplify, subdivide, custom
-├── break_modules: CRopeBreakMod[]   — tension break, custom
-└── render_modules: CRopeRenderMod[] — direct, Line2D, debug, custom</code></pre>
+├── data: CRopeData              - point positions, segment length
+├── anchors: CRopeAnchor[]       - attach rope points to nodes
+├── force_modules: CRopeForceMod[]   - gravity, wind, magnets, custom
+├── line_modules: CRopeLineMod[]     - smooth, simplify, subdivide, custom
+├── break_modules: CRopeBreakMod[]   - tension break, custom
+└── render_modules: CRopeRenderMod[] - direct, Line2D, debug, custom</code></pre>
 
       <h3>Key Features</h3>
       <ul>
         <li>Verlet integration with configurable stiffness and damping</li>
+        <li>Red-black constraint solver, up to 10x faster on long ropes</li>
+        <li>Sleep system that skips simulation for settled ropes and wakes on disturbance</li>
         <li>Collision support (StaticBody2D, RigidBody2D, CharacterBody2D)</li>
         <li>Anchor system with two-way physical interaction on RigidBody2D</li>
-        <li>Modular architecture — forces, line processing, breaking, and rendering are all interchangeable modules</li>
-        <li>Custom modules in GDScript — no C++ required</li>
+        <li>Modular architecture - forces, line processing, breaking, and rendering are all interchangeable modules</li>
+        <li>Custom modules in GDScript - no C++ required</li>
         <li>Debug probe for performance profiling</li>
       </ul>
 
@@ -83,31 +125,32 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
         <h4 class="text-white text-sm font-medium mb-2">Force Modules</h4>
         <ul class="text-gray-400 text-sm space-y-1">
-          <li><code class="text-brand-blue-light">CRopeGravityForceMod</code> — constant gravity</li>
-          <li><code class="text-brand-blue-light">CRopeWindForceMod</code> — oscillating wind</li>
-          <li><code class="text-brand-blue-light">CRopeMagnetForceMod</code> — attract/repel toward a node</li>
+          <li><code class="text-brand-blue-light">CRopeGravityForceMod</code> - constant gravity</li>
+          <li><code class="text-brand-blue-light">CRopeWorldGravityForceMod</code> - follows the project's 2D gravity</li>
+          <li><code class="text-brand-blue-light">CRopeWindForceMod</code> - oscillating wind</li>
+          <li><code class="text-brand-blue-light">CRopeMagnetForceMod</code> - attract/repel toward a node</li>
         </ul>
       </div>
       <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
         <h4 class="text-white text-sm font-medium mb-2">Line Modules</h4>
         <ul class="text-gray-400 text-sm space-y-1">
-          <li><code class="text-brand-blue-light">CRopeSmoothLineMod</code> — Laplacian smoothing</li>
-          <li><code class="text-brand-blue-light">CRopeSimplifyLineMod</code> — Ramer-Douglas-Peucker</li>
-          <li><code class="text-brand-blue-light">CRopeSubdivideLineMod</code> — Chaikin subdivision</li>
+          <li><code class="text-brand-blue-light">CRopeSmoothLineMod</code> - Laplacian smoothing</li>
+          <li><code class="text-brand-blue-light">CRopeSimplifyLineMod</code> - Ramer-Douglas-Peucker</li>
+          <li><code class="text-brand-blue-light">CRopeSubdivideLineMod</code> - Chaikin subdivision</li>
         </ul>
       </div>
       <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
         <h4 class="text-white text-sm font-medium mb-2">Render Modules</h4>
         <ul class="text-gray-400 text-sm space-y-1">
-          <li><code class="text-brand-blue-light">CRopeDirectRenderMod</code> — lightweight canvas draw</li>
-          <li><code class="text-brand-blue-light">CRopeLine2DRenderMod</code> — Line2D with gradient & material</li>
-          <li><code class="text-brand-blue-light">CRopeDebugRenderMod</code> — tension, forces, velocity overlay</li>
+          <li><code class="text-brand-blue-light">CRopeDirectRenderMod</code> - lightweight canvas draw</li>
+          <li><code class="text-brand-blue-light">CRopeLine2DRenderMod</code> - Line2D with gradient & material</li>
+          <li><code class="text-brand-blue-light">CRopeDebugRenderMod</code> - tension, forces, velocity overlay</li>
         </ul>
       </div>
       <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
         <h4 class="text-white text-sm font-medium mb-2">Break Modules</h4>
         <ul class="text-gray-400 text-sm space-y-1">
-          <li><code class="text-brand-blue-light">CRopeTensionBreakMod</code> — breaks when stretch exceeds threshold</li>
+          <li><code class="text-brand-blue-light">CRopeTensionBreakMod</code> - breaks when stretch exceeds threshold</li>
         </ul>
       </div>
     </div>
@@ -118,42 +161,124 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <a href="https://github.com/cuberact/godot-cuberact-library/blob/main/CROPE2D.md">CRope2D API Reference</a>
         on GitHub. The same documentation is also built into Godot's editor help system.</p>
 
-      <h3>14 Example Scenes</h3>
-      <p>Each example demonstrates specific features — stiffness & damping, gravity, magnets, simplify/subdivide,
-        custom GDScript render modules, debug overlay, rope breaking, pendulum, collisions, playground,
-        grappling hook, stress test, and a boulder network.</p>
+      <h3>17 Example Scenes</h3>
+      <p>The set ranges from polished showcases to focused feature demos: a bioluminescent jellyfish opener,
+        a plug-the-wires mini-game, a kite in gusty wind, growing sunflowers, a firefly meadow, then gravity
+        and magnet forces, simplify and subdivide line processing, custom GDScript render modules, a debug
+        overlay, rope breaking, a pendulum, a sandbox playground, a grappling hook, a stress test, and a
+        grand curtain finale.</p>
 
-      <details>
-        <summary class="cursor-pointer text-brand-blue-light hover:text-white transition-colors">Controls</summary>
-        <table>
-          <thead><tr><th>Input</th><th>Action</th></tr></thead>
-          <tbody>
-            <tr><td>LMB / RMB</td><td>Drag physics bodies or anchors</td></tr>
-            <tr><td>MMB drag</td><td>Pan camera</td></tr>
-            <tr><td>MMB click</td><td>Toggle boulder gravity</td></tr>
-            <tr><td>Mouse wheel</td><td>Zoom camera</td></tr>
-            <tr><td>R</td><td>Reset camera</td></tr>
-            <tr><td>F1</td><td>Show/hide controls overlay</td></tr>
-            <tr><td>F2</td><td>Show/hide FPS and debug probe</td></tr>
-            <tr><td>ESC</td><td>Back to launcher</td></tr>
-          </tbody>
-        </table>
-      </details>
+      <div class="not-prose aspect-video my-8">
+        <iframe
+          src="https://www.youtube.com/embed/QlQIzzPvY84"
+          title="CRope2D showcase - cuberact-library v1.1.0"
+          class="w-full h-full rounded-lg"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="not-prose grid sm:grid-cols-2 gap-4 mt-6 mb-2">
+        <img src="/images/cuberact-library-examples/e01-jellyfish.jpg" alt="Jellyfish scene - bioluminescent bells drifting over a seagrass meadow" class="rounded-lg border border-surface-600 w-full" loading="lazy" />
+        <img src="/images/cuberact-library-examples/e02-plug_the_wires.png" alt="Plug the Wires scene - colored cables dragged into matching sockets" class="rounded-lg border border-surface-600 w-full" loading="lazy" />
+        <img src="/images/cuberact-library-examples/e03-kite.jpg" alt="Kite scene - a figure flying a kite with fluttering ribbon tails" class="rounded-lg border border-surface-600 w-full" loading="lazy" />
+        <img src="/images/cuberact-library-examples/e04-growing_sunflowers.png" alt="Growing Sunflowers scene - rope stems growing and leaning toward the sun" class="rounded-lg border border-surface-600 w-full" loading="lazy" />
+        <img src="/images/cuberact-library-examples/e05-firefly_meadow.jpg" alt="Firefly Meadow scene - fireflies on thin glowing tethers at night" class="rounded-lg border border-surface-600 w-full" loading="lazy" />
+        <img src="/images/cuberact-library-examples/e17-grand_curtain.png" alt="Grand Curtain scene - a theater curtain of rope strands revealing the logo" class="rounded-lg border border-surface-600 w-full" loading="lazy" />
+      </div>
     </div>
   </section>
 
-  <!-- Interactive demo — link to dedicated demo page -->
+  <!-- Interactive demo - link to dedicated demo page -->
   <section id="demo" class="max-w-3xl mx-auto px-4 pb-16 text-center">
     <h2 class="text-2xl text-white mb-4">Try it in your browser</h2>
     <p class="text-gray-400 mb-6 text-sm">
-      All 14 example scenes running directly in the browser via Godot's web export.
+      All 17 example scenes running directly in the browser via Godot's web export.
     </p>
     <a
       href="/demo/"
-      class="inline-block px-6 py-3 bg-brand-blue text-white text-sm uppercase tracking-widest rounded hover:brightness-110 transition"
+      class="inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded hover:brightness-110 transition"
     >
-      Launch Examples &rarr;
+      Web demo &rarr;
     </a>
+  </section>
+
+  <!-- Changelog -->
+  <section id="changelog" class="max-w-3xl mx-auto px-4 pb-16">
+    <h2 class="text-2xl md:text-3xl text-white mb-8">Changelog</h2>
+
+    <!-- v1.1.0 -->
+    <div class="mb-12">
+      <div class="flex items-baseline gap-3 mb-1">
+        <h3 class="text-xl text-white">v1.1.0</h3>
+        <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light">Latest</span>
+      </div>
+      <p class="text-gray-500 text-xs uppercase tracking-widest mb-5">June 16, 2026</p>
+
+      <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Added</p>
+      <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
+        <li><strong class="text-gray-200">Rope sleep system.</strong> A settled rope skips the whole simulation and runs only a cheap watchdog until something disturbs it (a moved node or anchor, changed forces, or a collider entering its bounds). New API: <code class="text-brand-blue-light">sleep_enabled</code>, <code class="text-brand-blue-light">sleep_tolerance</code>, <code class="text-brand-blue-light">sleep_frames</code>, <code class="text-brand-blue-light">sleep_min_awake</code>, <code class="text-brand-blue-light">is_sleeping()</code>, <code class="text-brand-blue-light">wake()</code>, and the <code class="text-brand-blue-light">slept</code> / <code class="text-brand-blue-light">woken</code> signals.</li>
+        <li><strong class="text-gray-200"><code class="text-brand-blue-light">CRopeWorldGravityForceMod</code>.</strong> Zero-config force module that follows the project's 2D gravity every frame, including runtime changes.</li>
+        <li><strong class="text-gray-200">Red-black constraint solver.</strong> Up to 10x faster substeps on long ropes, and now the default. The sequential solver remains available.</li>
+        <li><strong class="text-gray-200">Gradient on <code class="text-brand-blue-light">CRopeDirectRenderMod</code>.</strong> Colors the rope along its length, sampled by arc length.</li>
+        <li><strong class="text-gray-200"><code class="text-brand-blue-light">CRopeData.get_rect()</code>.</strong> Bounding box query for the rope points.</li>
+      </ul>
+
+      <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Changed</p>
+      <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
+        <li><strong class="text-gray-200">Per-second damping.</strong> Frame-rate and substep independent. The default changed from 0.4 to 0.6, so re-tune any explicit damping values.</li>
+        <li><strong class="text-gray-200">Red-black is the default solver.</strong> Slightly more elastic at the same iterations; raise iterations or switch to sequential for the old stiffness.</li>
+        <li><strong class="text-gray-200">Debug renderer renames.</strong> <code class="text-brand-blue-light">draw_overlay</code> (was <code class="text-brand-blue-light">draw_debug_overlay</code>) and <code class="text-brand-blue-light">wake_color</code> (was <code class="text-brand-blue-light">debug_overlay_color</code>), plus a new <code class="text-brand-blue-light">sleep_color</code> and an AABB section.</li>
+      </ul>
+
+      <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Examples</p>
+      <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
+        <li>Reworked the example project: new showcase scenes (jellyfish, plug the wires, kite, growing sunflowers, firefly meadow, grand curtain), older single-feature scenes removed, everything renumbered (17 scenes total).</li>
+      </ul>
+
+      <details>
+        <summary class="cursor-pointer text-brand-blue-light hover:text-white text-sm transition-colors">Fixes and performance</summary>
+        <p class="text-brand-blue-light text-xs uppercase tracking-widest mt-5 mb-2">Fixed</p>
+        <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
+          <li>Crash safety for freed anchor and attractor nodes, and for out-of-range break indices.</li>
+          <li><code class="text-brand-blue-light">simulate()</code> is safe against data mutation from signal handlers and force modules.</li>
+          <li>Break modules run on current-frame data, so a break no longer loses a simulation step.</li>
+          <li>A rope created over existing data no longer starts with stale velocities.</li>
+          <li><code class="text-brand-blue-light">break_at</code> no longer spawns dead single-point ropes and rejects invalid segments.</li>
+          <li>Anchors with an index outside the rope data are treated as inactive.</li>
+          <li>The anchor target node is cached per rope instead of on the shared anchor resource.</li>
+          <li>Physics space state is refreshed each frame instead of cached forever.</li>
+          <li>The wind time accumulator wraps to the wave period to avoid float precision loss.</li>
+          <li><code class="text-brand-blue-light">create_path_by_count</code> enforces a minimum segment length on degenerate paths.</li>
+          <li>The mesh builder guards zero width, clamps <code class="text-brand-blue-light">tile_aspect</code>, and fixes round-joint preallocation.</li>
+          <li>A warning is emitted when a <code class="text-brand-blue-light">CRope2D</code> enters the tree with an unsupported scale.</li>
+        </ul>
+        <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Performance</p>
+        <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5">
+          <li>Skip the local-to-global transform for unchanged ropes and materialize <code class="text-brand-blue-light">prev_points</code> lazily.</li>
+          <li>Skip rope sections and anchor pull when no <code class="text-brand-blue-light">RigidBody2D</code> consumes them.</li>
+          <li>Skip pinch detection for points near a single collider.</li>
+          <li>Reuse scratch buffers across the line modules and the debug renderer.</li>
+          <li>Squared-distance math in simplify and magnet, and raw-pointer geometry writes in the mesh builder.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- v1.0.0 -->
+    <div>
+      <h3 class="text-xl text-white mb-1">v1.0.0</h3>
+      <p class="text-gray-500 text-xs uppercase tracking-widest mb-5">March 4, 2026</p>
+      <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Added</p>
+      <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5">
+        <li><code class="text-brand-blue-light">CRope2D</code> node: Verlet 2D rope physics with configurable stiffness and damping.</li>
+        <li>Collision support (StaticBody2D, RigidBody2D, CharacterBody2D).</li>
+        <li>Anchor system (start, end, both, none).</li>
+        <li>Modular architecture with four module types: force, line, render, and break.</li>
+        <li>Platform support: macOS, Linux, Windows, Web.</li>
+        <li>13 example scenes and 10 custom GDScript module examples.</li>
+        <li>Complete API documentation.</li>
+      </ul>
+    </div>
   </section>
 
   <!-- License -->

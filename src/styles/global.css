@@ -11,6 +11,12 @@
 }
 
 @layer base {
+  /* Reserve the scrollbar gutter on every page so short pages (no scrollbar)
+     and long pages (scrollbar) keep the same content width - no horizontal shift. */
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     @apply bg-surface-900 text-gray-200 antialiased;
   }
@@ -28,7 +34,24 @@
     color: #ffffff;
   }
 
-  .prose a {
+  .prose a:not(.not-prose *) {
     @apply text-brand-blue-light hover:text-white;
+  }
+
+  /* The lightbox script adds .zoomable only to images it would show meaningfully
+     bigger than they already are (so a full-width image on a phone stays inert).
+     Those images are clickable and brighten on hover. */
+  main img.zoomable {
+    cursor: zoom-in;
+    transition: filter 0.2s ease;
+  }
+  main img.zoomable:hover {
+    filter: brightness(1.1);
+  }
+
+  /* Image clicks never navigate, so a non-zoomable image inside a link
+     shouldn't show the link's pointer cursor. */
+  main a img:not(.zoomable) {
+    cursor: default;
   }
 }

@@ -1,91 +1,156 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
-const projects = [
+// Reverse-chronological feed of studio milestones and blog posts (newest first).
+// Project cards show an image plus a "Web demo" / "Learn more" action; blog cards
+// are text-only, marked "Blog" in the eyebrow, with a "Read post" link.
+const milestones = [
   {
-    title: 'cuberact-library',
-    tag: 'GDExtension',
-    version: 'v1.0.0',
-    image: '/images/crope2d.jpg',
-    imageAlt: 'CRope2D playground — ropes, collisions, and physics in action',
-    description: '2D rope physics for Godot 4.5+. Verlet integration, collisions, anchoring, breaking, and a fully modular architecture. 14 example scenes included.',
-    demoHref: '/demo/crope2d/',
-    projectHref: '/projects/cuberact-library/',
+    type: "project",
+    date: new Date("2026-06-16"),
+    title: "cuberact-library v1.1.0",
+    badge: "New",
+    tags: ["GDExtension", "GDScript", "Open Source Examples", "Godot 4.5+"],
+    image: "/images/cuberact-library-examples/e01-jellyfish-hero.jpg",
+    imageAlt: "CRope2D jellyfish scene - bioluminescent bells drifting over a seagrass meadow",
+    description: "A big update to my 2D rope extension for Godot. Settled ropes now go to sleep to save CPU, a new red-black solver makes long ropes up to 10x cheaper, and a world-gravity force module follows your project's physics automatically. There are also six new showcase scenes, for 17 in total.",
+    pageHref: "/projects/cuberact-library/",
+    demoHref: "/demo/crope2d/",
   },
   {
-    title: 'Planet Chunked LOD',
-    tag: 'GDScript · Open Source',
-    image: '/images/planet.jpg',
-    imageAlt: 'Procedurally generated planet from orbit with atmosphere',
-    description: 'Procedurally generated planet with dynamic level-of-detail, written entirely in GDScript for Godot 4.6. Fly from orbit to the surface — the mesh adapts continuously.',
-    demoHref: '/demo/planet-chunked-lod/',
-    projectHref: '/projects/planet-chunked-lod/',
+    type: "project",
+    date: new Date("2026-03-20"),
+    title: "Planet Chunked LOD",
+    tags: ["GDScript", "Open Source", "Godot 4.6+"],
+    image: "/images/planet.jpg",
+    imageAlt: "Procedurally generated planet from orbit with atmosphere",
+    description: "Procedurally generated planet with dynamic level-of-detail, written entirely in GDScript for Godot 4.6. Fly from orbit down to the surface and the mesh adapts continuously.",
+    pageHref: "/projects/planet-chunked-lod/",
+    demoHref: "/demo/planet-chunked-lod/",
+  },
+  {
+    type: "project",
+    date: new Date("2026-03-04"),
+    title: "cuberact-library v1.0.0",
+    tags: ["GDExtension", "GDScript", "Open Source Examples", "Godot 4.5+"],
+    image: "/images/crope2d.jpg",
+    imageAlt: "CRope2D playground with ropes, collisions, and physics",
+    description: "The first release of my 2D rope extension for Godot 4.5+. Verlet integration, collisions, anchoring, breaking, and a fully modular architecture for forces, line processing, rendering, and breaking.",
+    pageHref: "/projects/cuberact-library/",
   },
 ];
+
+const blogPosts = (await getCollection("blog", ({ data }) => !data.draft)).map((post) => ({
+  type: "blog",
+  date: post.data.date,
+  title: post.data.title,
+  description: post.data.description,
+  tags: post.data.tags,
+  pageHref: `/blog/${post.id}/`,
+}));
+
+const latest = [...milestones, ...blogPosts].sort((a, b) => b.date.valueOf() - a.date.valueOf());
+
+const fmtDate = (d) => d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 ---
 
 <BaseLayout title="Cuberact">
   <!-- Hero -->
-  <section class="max-w-5xl mx-auto px-4 py-24 md:py-32 text-center">
+  <section class="max-w-5xl mx-auto px-4 pt-12 md:pt-16 pb-10 md:pb-12 text-center">
     <img
       src="/images/cuberact-logo-512.png"
       alt="Cuberact logo"
       width="160"
       height="160"
       class="mx-auto mb-6"
+      data-no-zoom
     />
     <img
       src="/images/cuberact-text-512.png"
       alt="CUBERACT"
       width="320"
+      height="53"
       class="mx-auto mb-8"
+      data-no-zoom
     />
     <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-4">
       Indie studio making games, tools, and extensions.
     </p>
     <p class="text-base text-gray-500 max-w-2xl mx-auto">
-      I'm building tools and games with Godot Engine — from physics extensions to procedural planets.
+      I'm building tools and games with Godot Engine - from physics extensions to procedural planets.
       Everything here is made to be useful, playable, and open to learn from.
     </p>
   </section>
 
-  <!-- Projects -->
-  <section class="max-w-5xl mx-auto px-4 pb-24">
-    <p class="text-brand-blue-light text-sm uppercase tracking-widest text-center mb-10">News</p>
+  <!-- Latest feed -->
+  <section class="max-w-5xl mx-auto px-4 pt-4 md:pt-6 pb-24">
 
-    <div class="grid md:grid-cols-2 gap-8">
-      {projects.map(({ title, tag, version, image, imageAlt, description, demoHref, projectHref }) => (
-        <div class="bg-surface-800 rounded-lg border border-surface-600 overflow-hidden">
-          <a href={projectHref} class="block group">
-            <img
-              src={image}
-              alt={imageAlt}
-              class="w-full aspect-video object-cover group-hover:brightness-110 transition"
-            />
-          </a>
-          <div class="p-6">
-            <div class="flex items-start justify-between mb-2">
-              <h3 class="text-white text-lg">{title}</h3>
-              {version && <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light shrink-0 ml-2">{version}</span>}
+    <div class="space-y-8">
+      {latest.map((item) => (
+        <article class="bg-surface-800 rounded-lg border border-surface-600 overflow-hidden flex flex-col-reverse md:flex-row-reverse">
+          {item.type === "project" ? (
+            <a href={item.pageHref} class="block overflow-hidden md:w-2/5 md:shrink-0 md:self-start md:m-2.5 md:rounded-lg md:border md:border-surface-600">
+              <img
+                src={item.image}
+                alt={item.imageAlt}
+                class="w-full aspect-video object-cover"
+              />
+            </a>
+          ) : (
+            <div class="hidden md:flex md:w-2/5 md:shrink-0 items-center justify-center">
+              <svg class="w-28 h-28 text-surface-900" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
+                <line x1="16" y1="8" x2="2" y2="22" />
+                <line x1="17.5" y1="15" x2="9" y2="15" />
+              </svg>
             </div>
-            <span class="inline-block px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300 mb-3">{tag}</span>
-            <p class="text-gray-400 text-sm mb-4">{description}</p>
-            <div class="flex gap-4">
-              <a
-                href={demoHref}
-                class="inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded hover:brightness-110 transition"
-              >
-                Try demo &rarr;
-              </a>
-              <a
-                href={projectHref}
-                class="text-brand-blue-light hover:text-white text-xs uppercase tracking-widest transition-colors self-center"
-              >
-                Learn more &rarr;
-              </a>
+          )}
+          <div class="p-6 flex flex-col flex-1">
+            <p class="text-gray-500 text-xs uppercase tracking-widest mb-2">
+              <span class="text-brand-blue-light">{item.type === "blog" ? "Blog" : "News"} &middot; </span>{fmtDate(item.date)}
+            </p>
+            <div class="flex items-center gap-3 mb-2">
+              <h2 class="text-white text-lg">{item.title}</h2>
+              {item.badge && <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light shrink-0">{item.badge}</span>}
+            </div>
+            {item.type === "project" && (
+              <div class="flex flex-wrap gap-2 mb-3">
+                {item.tags.map((t) => (
+                  <span class="inline-block px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300">{t}</span>
+                ))}
+              </div>
+            )}
+            <p class="text-gray-400 text-sm mb-4">{item.description}</p>
+            <div class="flex gap-4 mt-auto">
+              {item.type === "project" ? (
+                <Fragment>
+                  {item.demoHref && (
+                    <a
+                      href={item.demoHref}
+                      class="inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded hover:brightness-110 transition"
+                    >
+                      Web demo &rarr;
+                    </a>
+                  )}
+                  <a
+                    href={item.pageHref}
+                    class="text-brand-blue-light hover:text-white text-xs uppercase tracking-widest transition-colors self-center"
+                  >
+                    Learn more &rarr;
+                  </a>
+                </Fragment>
+              ) : (
+                <a
+                  href={item.pageHref}
+                  class="text-brand-blue-light hover:text-white text-xs uppercase tracking-widest transition-colors self-center"
+                >
+                  Read post &rarr;
+                </a>
+              )}
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   </section>

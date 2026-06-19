@@ -3,11 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const demos = [
   {
-    title: 'CRope2D — 14 Example Scenes',
+    title: 'CRope2D: 17 Example Scenes',
     subtitle: 'cuberact-library',
-    image: '/images/crope2d.jpg',
-    imageAlt: 'CRope2D playground — ropes, collisions, and physics in action',
-    description: 'Collisions, grappling hooks, rope breaking, stress tests, and more — all running via Godot\'s web export.',
+    version: 'v1.1.0',
+    image: '/images/cuberact-library-examples/e01-jellyfish.jpg',
+    imageAlt: 'CRope2D jellyfish scene - bioluminescent bells over a seagrass meadow',
+    description: 'Collisions, grappling hooks, rope breaking, stress tests, and more - all running via Godot\'s web export.',
     href: '/demo/crope2d/',
   },
   {
@@ -21,33 +22,33 @@ const demos = [
 ];
 ---
 
-<BaseLayout title="Interactive Demos — Cuberact" description="Try Cuberact projects directly in your browser. No download needed.">
-  <section class="max-w-5xl mx-auto px-4 py-16 md:py-24">
-    <h1 class="text-3xl md:text-4xl text-white mb-4 text-center">Interactive Demos</h1>
+<BaseLayout title="Interactive Demos - Cuberact" description="Try Cuberact projects directly in your browser. No download needed.">
+  <section class="max-w-5xl mx-auto px-4 pt-10 md:pt-12 pb-12 md:pb-16">
+    <h1 class="sr-only">Interactive Demos</h1>
     <p class="text-gray-400 max-w-2xl mx-auto text-center mb-12">
       Try Cuberact projects directly in your browser. No download needed.
     </p>
 
     <div class="grid md:grid-cols-2 gap-8">
-      {demos.map(({ title, subtitle, image, imageAlt, description, href }) => (
-        <a
-          href={href}
-          class="bg-surface-800 rounded-lg border border-surface-600 overflow-hidden group hover:border-brand-blue-light transition-colors block"
-        >
+      {demos.map(({ title, subtitle, version, image, imageAlt, description, href }) => (
+        <div class="bg-surface-800 rounded-lg border border-surface-600 overflow-hidden flex flex-col">
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <p class="text-brand-blue-light text-sm uppercase tracking-widest">{subtitle}</p>
+              {version && <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light font-medium">{version}</span>}
+            </div>
+            <h2 class="text-white text-lg mb-2">{title}</h2>
+            <p class="text-gray-400 text-sm mb-4">{description}</p>
+            <a href={href} class="mt-auto self-start inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded hover:brightness-110 transition">
+              Web demo &rarr;
+            </a>
+          </div>
           <img
             src={image}
             alt={imageAlt}
-            class="w-full aspect-video object-cover group-hover:brightness-110 transition"
+            class="w-full aspect-video object-cover"
           />
-          <div class="p-6">
-            <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-1">{subtitle}</p>
-            <h2 class="text-white text-lg mb-2 group-hover:text-brand-blue-light transition-colors">{title}</h2>
-            <p class="text-gray-400 text-sm mb-4">{description}</p>
-            <span class="text-brand-blue-light text-xs uppercase tracking-widest">
-              Launch demo &rarr;
-            </span>
-          </div>
-        </a>
+        </div>
       ))}
     </div>
   </section>

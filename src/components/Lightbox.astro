@@ -1,0 +1,124 @@
+---
+// Global image lightbox. Rendered once in BaseLayout, it makes every content
+// image inside <main> (except those marked data-no-zoom) open full-size on click.
+---
+
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<style>
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4vmin;
+    background: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    cursor: zoom-out;
+  }
+  .lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.92);
+    transition: transform 0.25s ease;
+  }
+  .lightbox.open img {
+    transform: scale(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox,
+    .lightbox img {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+
+  if (lb && lbImg) {
+    const open = (src: string, alt: string) => {
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => {
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    // Only enlarge an image if the lightbox would show it meaningfully bigger
+    // than it already is on the page (a full-width image on a phone is pointless
+    // to open). Re-evaluated on load and resize, with a 10% margin so it does
+    // not toggle on a one-pixel difference.
+    const candidates = [
+      ...document.querySelectorAll<HTMLImageElement>('main img:not([data-no-zoom])'),
+    ];
+
+    const lightboxWidth = (img: HTMLImageElement) => {
+      const nw = img.naturalWidth;
+      const nh = img.naturalHeight;
+      if (!nw || !nh) return 0;
+      const vmin = Math.min(window.innerWidth, window.innerHeight) / 100;
+      const pad = 4 * vmin;
+      const scale = Math.min(
+        (window.innerWidth - 2 * pad) / nw,
+        (window.innerHeight - 2 * pad) / nh,
+        1,
+      );
+      return nw * scale;
+    };
+
+    const refresh = () => {
+      for (const img of candidates) {
+        const curW = img.getBoundingClientRect().width;
+        img.classList.toggle('zoomable', curW > 0 && lightboxWidth(img) >= curW * 1.1);
+      }
+    };
+
+    candidates.forEach((img) => {
+      if (!img.complete) img.addEventListener('load', refresh, { once: true });
+      img.addEventListener('click', (e) => {
+        // Image clicks never navigate: zoom if worthwhile, otherwise do nothing.
+        e.preventDefault();
+        e.stopPropagation();
+        if (img.classList.contains('zoomable')) {
+          open(img.currentSrc || img.src, img.alt);
+        }
+      });
+    });
+
+    refresh();
+
+    let resizeTimer: number;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(refresh, 150);
+    });
+
+    // Any click inside the overlay closes it (the image or the backdrop).
+    lb.addEventListener('click', close);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lb.classList.contains('open')) close();
+    });
+  }
+</script>

@@ -3,12 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GodotEmbed from '../../components/GodotEmbed.astro';
 ---
 
-<BaseLayout title="CRope2D Demo — Cuberact" description="14 interactive CRope2D example scenes running in your browser.">
-  <section class="max-w-3xl mx-auto px-4 py-16 md:py-24 text-center">
-    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-1">cuberact-library</p>
-    <h1 class="text-3xl md:text-4xl text-white mb-2">CRope2D — 14 Example Scenes</h1>
+<BaseLayout title="CRope2D Demo - Cuberact" description="17 interactive CRope2D example scenes running in your browser.">
+  <section class="max-w-3xl mx-auto px-4 pt-10 md:pt-12 pb-12 md:pb-16 text-center">
+    <div class="flex items-center justify-center gap-2 mb-1">
+      <p class="text-brand-blue-light text-sm uppercase tracking-widest">cuberact-library</p>
+      <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light font-medium">v1.1.0</span>
+    </div>
+    <h1 class="text-3xl md:text-4xl text-white mb-2">CRope2D: 17 Example Scenes</h1>
     <p class="text-gray-400">
-      Collisions, grappling hooks, rope breaking, stress tests, and more — all running via Godot's web export.
+      Collisions, grappling hooks, rope breaking, stress tests, and more - all running via Godot's web export.
     </p>
   </section>
 
@@ -39,14 +42,12 @@ import GodotEmbed from '../../components/GodotEmbed.astro';
       </p>
     </div>
 
-    <div class="flex justify-center">
-      <GodotEmbed
-        src="/godot-demos/crope2d-examples/index.html"
-        title="CRope2D Examples"
-        width={1000}
-        height={1000}
-      />
-    </div>
+    <GodotEmbed
+      src="/godot-demos/crope2d-examples/index.html"
+      title="CRope2D Examples"
+      width={1920}
+      height={1080}
+    />
 
     <div class="text-center mt-6">
       <a

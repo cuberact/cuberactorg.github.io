@@ -10,12 +10,12 @@ const { src, title, width = 800, height = 600 } = Astro.props;
 const aspectRatio = `${width} / ${height}`;
 ---
 
-<div class="godot-embed w-full rounded-lg overflow-hidden border border-surface-600 bg-surface-800" style={`max-width: ${width}px;`}>
+<div class="godot-embed w-full rounded-lg overflow-hidden border border-surface-600 bg-surface-800">
   <div
     class="relative w-full"
     style={`aspect-ratio: ${aspectRatio};`}
   >
-    <!-- Play button overlay — click to load the iframe -->
+    <!-- Play button overlay - click to load the iframe -->
     <button
       class="godot-play absolute inset-0 flex flex-col items-center justify-center gap-4 bg-surface-900/80 hover:bg-surface-900/60 transition-colors cursor-pointer z-10"
       aria-label={`Launch ${title}`}
