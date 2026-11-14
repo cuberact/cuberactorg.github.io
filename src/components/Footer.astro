@@ -6,7 +6,10 @@ const year = new Date().getFullYear();
 
 <footer class="border-t border-surface-600 mt-16">
   <div class="max-w-5xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-    <span>&copy; {year} Cuberact</span>
+    <div class="flex gap-6">
+      <span>&copy; {year} Cuberact</span>
+      <a href="https://www.cuberact.com" class="hover:text-white">Cuberact apps</a>
+    </div>
     <div class="flex gap-6 items-center">
       {socials.map(({ href, label, path, footerBg }) => (
         <a href={href}

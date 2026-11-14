@@ -10,7 +10,7 @@ const links = [
 ];
 ---
 
-<BaseLayout title="Planet Chunked LOD - Cuberact" description="Procedurally generated planet with dynamic LOD, written entirely in GDScript for Godot 4.6.">
+<BaseLayout title="Planet Chunked LOD - Cuberact Games" description="Procedurally generated planet with dynamic LOD, written entirely in GDScript for Godot 4.6.">
   <section class="max-w-4xl mx-auto px-4 pt-10 md:pt-12 pb-12 md:pb-16 space-y-12">
 
     <!-- Header -->
@@ -58,8 +58,8 @@ const links = [
           class:list={[
             'inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm transition',
             l.primary
-              ? 'bg-brand-blue text-white hover:brightness-110'
-              : 'bg-surface-800 border border-surface-600 text-gray-300 hover:border-brand-blue-light hover:text-white',
+              ? 'bg-accent text-white hover:brightness-110'
+              : 'bg-surface-800 border border-surface-600 text-gray-300 hover:border-accent-light hover:text-white',
           ]}
         >
           {l.path && <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d={l.path} /></svg>}
@@ -118,23 +118,23 @@ const links = [
       <p class="text-gray-400 text-sm mb-4">The planet is rendered in five stages:</p>
       <ol class="space-y-3 text-sm">
         <li class="flex gap-3">
-          <span class="text-brand-blue-light font-semibold shrink-0">1.</span>
+          <span class="text-accent-light font-semibold shrink-0">1.</span>
           <div><strong class="text-gray-300">Cube &rarr; Sphere</strong> <span class="text-gray-400">- Start with a cube. Project each face onto a sphere using the spherified cube mapping for uniform vertex distribution.</span></div>
         </li>
         <li class="flex gap-3">
-          <span class="text-brand-blue-light font-semibold shrink-0">2.</span>
+          <span class="text-accent-light font-semibold shrink-0">2.</span>
           <div><strong class="text-gray-300">Quadtree LOD</strong> <span class="text-gray-400">- Subdivide each face into a recursive tree of chunks. Split near the camera, merge far away.</span></div>
         </li>
         <li class="flex gap-3">
-          <span class="text-brand-blue-light font-semibold shrink-0">3.</span>
+          <span class="text-accent-light font-semibold shrink-0">3.</span>
           <div><strong class="text-gray-300">Mesh building</strong> <span class="text-gray-400">- Each chunk is a 17&times;17 grid on the sphere. Chunks are recycled from a pool. Split reuses ~28% of parent vertices.</span></div>
         </li>
         <li class="flex gap-3">
-          <span class="text-brand-blue-light font-semibold shrink-0">4.</span>
+          <span class="text-accent-light font-semibold shrink-0">4.</span>
           <div><strong class="text-gray-300">Shader terrain</strong> <span class="text-gray-400">- A GPU shader displaces vertices with procedural noise and colors everything per-pixel: ocean, grass, rock, snow, triplanar textures, Lambert lighting.</span></div>
         </li>
         <li class="flex gap-3">
-          <span class="text-brand-blue-light font-semibold shrink-0">5.</span>
+          <span class="text-accent-light font-semibold shrink-0">5.</span>
           <div><strong class="text-gray-300">Atmosphere</strong> <span class="text-gray-400">- A second shader renders Rayleigh scattering on a transparent sphere. Blue sky, sunset glow, star blending.</span></div>
         </li>
       </ol>

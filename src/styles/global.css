@@ -3,15 +3,14 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --color-brand-pink: #ff0066;
-  --color-brand-blue: #0077ff;
-  --color-brand-blue-light: #6699ff;
-  --color-brand-blue-dark: #0d47a1;
+  /* Cuberact Games: the logo's pink as the accent, on a dark plum; www.cuberact.com keeps the logo's blue on navy. */
+  --color-accent: #e6005c;
+  --color-accent-light: #ff5c99;
 
-  --color-surface-600: #24243e;
-  --color-surface-700: #1a1a2e;
-  --color-surface-800: #141425;
-  --color-surface-900: #0d0d1a;
+  --color-surface-600: #35202f;
+  --color-surface-700: #281626;
+  --color-surface-800: #1d1019;
+  --color-surface-900: #140b12;
 
   --font-heading: 'Raleway', sans-serif;
 }
@@ -46,7 +45,7 @@
   }
 
   ::selection {
-    background-color: #3b82f6;
+    background-color: var(--color-accent);
     color: #ffffff;
   }
 
@@ -70,5 +69,5 @@
 
 /* Outside the layers, so it wins over the typography plugin's link color. */
 .prose a:not(.not-prose *) {
-  @apply text-brand-blue-light hover:text-white;
+  @apply text-accent-light hover:text-white;
 }

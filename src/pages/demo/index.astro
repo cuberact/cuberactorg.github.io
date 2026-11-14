@@ -22,7 +22,7 @@ const demos = [
 ];
 ---
 
-<BaseLayout title="Interactive Demos - Cuberact" description="Try Cuberact projects directly in your browser. No download needed.">
+<BaseLayout title="Interactive Demos - Cuberact Games" description="Try Cuberact projects directly in your browser. No download needed.">
   <section class="max-w-5xl mx-auto px-4 pt-10 md:pt-12 pb-12 md:pb-16">
     <h1 class="sr-only">Interactive Demos</h1>
     <p class="text-gray-400 max-w-2xl mx-auto text-center mb-12">
@@ -34,12 +34,12 @@ const demos = [
         <div class="bg-surface-800 rounded-lg border border-surface-600 overflow-hidden flex flex-col">
           <div class="p-6 flex flex-col flex-1">
             <div class="flex items-center gap-2 mb-1">
-              <p class="text-brand-blue-light text-sm uppercase tracking-widest">{subtitle}</p>
-              {version && <span class="px-2 py-0.5 text-xs rounded-sm bg-brand-blue/20 text-brand-blue-light font-medium">{version}</span>}
+              <p class="text-accent-light text-sm uppercase tracking-widest">{subtitle}</p>
+              {version && <span class="px-2 py-0.5 text-xs rounded-sm bg-accent/20 text-accent-light font-medium">{version}</span>}
             </div>
             <h2 class="text-white text-lg mb-2">{title}</h2>
             <p class="text-gray-400 text-sm mb-4">{description}</p>
-            <a href={href} class="mt-auto self-start inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded-sm hover:brightness-110 transition">
+            <a href={href} class="mt-auto self-start inline-block px-4 py-2 bg-accent text-white text-xs uppercase tracking-widest rounded-sm hover:brightness-110 transition">
               Web demo &rarr;
             </a>
           </div>

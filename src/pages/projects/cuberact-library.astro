@@ -11,10 +11,10 @@ const links = [
 ];
 ---
 
-<BaseLayout title="cuberact-library - Cuberact" description="A growing collection of GDExtension components for Godot 4.5+. Currently includes CRope2D - 2D rope physics with modular architecture.">
+<BaseLayout title="cuberact-library - Cuberact Games" description="A growing collection of GDExtension components for Godot 4.5+. Currently includes CRope2D - 2D rope physics with modular architecture.">
   <section class="max-w-3xl mx-auto px-4 pt-10 md:pt-12 pb-12 md:pb-16">
     <h1 class="text-3xl md:text-4xl text-white mb-4">cuberact-library</h1>
-    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-4">GDExtension for Godot 4.5+</p>
+    <p class="text-accent-light text-sm uppercase tracking-widest mb-4">GDExtension for Godot 4.5+</p>
 
     <div class="flex flex-wrap gap-2 mb-8">
       <span class="px-2 py-0.5 text-xs rounded-sm bg-surface-600 text-gray-300">GDExtension</span>
@@ -30,15 +30,15 @@ const links = [
       </p>
 
       <div class="not-prose bg-surface-800 rounded-lg border border-surface-600 p-5 my-8">
-        <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-3">New in v1.1.0</p>
+        <p class="text-accent-light text-xs uppercase tracking-widest mb-3">New in v1.1.0</p>
         <ul class="text-gray-400 text-sm space-y-1.5 list-disc pl-5">
           <li>Sleep system: settled ropes skip simulation and run only a cheap watchdog, a big saving for scenes full of ropes.</li>
           <li>Red-black constraint solver (now the default): up to 10x faster substeps on long ropes.</li>
-          <li><code class="text-brand-blue-light">CRopeWorldGravityForceMod</code>: follows your project's 2D gravity, including runtime changes.</li>
+          <li><code class="text-accent-light">CRopeWorldGravityForceMod</code>: follows your project's 2D gravity, including runtime changes.</li>
           <li>Gradient coloring on the direct renderer.</li>
           <li>Six new showcase scenes, for 17 in total.</li>
         </ul>
-        <a href="#changelog" class="inline-block mt-4 text-brand-blue-light hover:text-white text-xs uppercase tracking-widest transition-colors">Full changelog &rarr;</a>
+        <a href="#changelog" class="inline-block mt-4 text-accent-light hover:text-white text-xs uppercase tracking-widest transition-colors">Full changelog &rarr;</a>
       </div>
 
       <h2>Supported Platforms</h2>
@@ -66,8 +66,8 @@ const links = [
             class:list={[
               'inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm transition',
               l.primary
-                ? 'bg-brand-blue text-white hover:brightness-110'
-                : 'bg-surface-800 border border-surface-600 text-gray-300 hover:border-brand-blue-light hover:text-white',
+                ? 'bg-accent text-white hover:brightness-110'
+                : 'bg-surface-800 border border-surface-600 text-gray-300 hover:border-accent-light hover:text-white',
             ]}
           >
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d={l.path} /></svg>
@@ -81,7 +81,7 @@ const links = [
   <!-- CRope2D -->
   <section id="crope2d" class="max-w-3xl mx-auto px-4 pb-16">
     <h2 class="text-2xl md:text-3xl text-white mb-4">CRope2D</h2>
-    <p class="text-brand-blue-light text-sm uppercase tracking-widest mb-8">2D Rope Physics Simulation</p>
+    <p class="text-accent-light text-sm uppercase tracking-widest mb-8">2D Rope Physics Simulation</p>
 
     <img
       src="/images/cuberact-library-examples/e01-jellyfish-hero.jpg"
@@ -125,32 +125,32 @@ const links = [
       <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
         <h4 class="text-white text-sm font-medium mb-2">Force Modules</h4>
         <ul class="text-gray-400 text-sm space-y-1">
-          <li><code class="text-brand-blue-light">CRopeGravityForceMod</code> - constant gravity</li>
-          <li><code class="text-brand-blue-light">CRopeWorldGravityForceMod</code> - follows the project's 2D gravity</li>
-          <li><code class="text-brand-blue-light">CRopeWindForceMod</code> - oscillating wind</li>
-          <li><code class="text-brand-blue-light">CRopeMagnetForceMod</code> - attract/repel toward a node</li>
+          <li><code class="text-accent-light">CRopeGravityForceMod</code> - constant gravity</li>
+          <li><code class="text-accent-light">CRopeWorldGravityForceMod</code> - follows the project's 2D gravity</li>
+          <li><code class="text-accent-light">CRopeWindForceMod</code> - oscillating wind</li>
+          <li><code class="text-accent-light">CRopeMagnetForceMod</code> - attract/repel toward a node</li>
         </ul>
       </div>
       <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
         <h4 class="text-white text-sm font-medium mb-2">Line Modules</h4>
         <ul class="text-gray-400 text-sm space-y-1">
-          <li><code class="text-brand-blue-light">CRopeSmoothLineMod</code> - Laplacian smoothing</li>
-          <li><code class="text-brand-blue-light">CRopeSimplifyLineMod</code> - Ramer-Douglas-Peucker</li>
-          <li><code class="text-brand-blue-light">CRopeSubdivideLineMod</code> - Chaikin subdivision</li>
+          <li><code class="text-accent-light">CRopeSmoothLineMod</code> - Laplacian smoothing</li>
+          <li><code class="text-accent-light">CRopeSimplifyLineMod</code> - Ramer-Douglas-Peucker</li>
+          <li><code class="text-accent-light">CRopeSubdivideLineMod</code> - Chaikin subdivision</li>
         </ul>
       </div>
       <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
         <h4 class="text-white text-sm font-medium mb-2">Render Modules</h4>
         <ul class="text-gray-400 text-sm space-y-1">
-          <li><code class="text-brand-blue-light">CRopeDirectRenderMod</code> - lightweight canvas draw</li>
-          <li><code class="text-brand-blue-light">CRopeLine2DRenderMod</code> - Line2D with gradient & material</li>
-          <li><code class="text-brand-blue-light">CRopeDebugRenderMod</code> - tension, forces, velocity overlay</li>
+          <li><code class="text-accent-light">CRopeDirectRenderMod</code> - lightweight canvas draw</li>
+          <li><code class="text-accent-light">CRopeLine2DRenderMod</code> - Line2D with gradient & material</li>
+          <li><code class="text-accent-light">CRopeDebugRenderMod</code> - tension, forces, velocity overlay</li>
         </ul>
       </div>
       <div class="bg-surface-800 rounded-lg p-5 border border-surface-600">
         <h4 class="text-white text-sm font-medium mb-2">Break Modules</h4>
         <ul class="text-gray-400 text-sm space-y-1">
-          <li><code class="text-brand-blue-light">CRopeTensionBreakMod</code> - breaks when stretch exceeds threshold</li>
+          <li><code class="text-accent-light">CRopeTensionBreakMod</code> - breaks when stretch exceeds threshold</li>
         </ul>
       </div>
     </div>
@@ -197,7 +197,7 @@ const links = [
     </p>
     <a
       href="/demo/"
-      class="inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded-sm hover:brightness-110 transition"
+      class="inline-block px-4 py-2 bg-accent text-white text-xs uppercase tracking-widest rounded-sm hover:brightness-110 transition"
     >
       Web demo &rarr;
     </a>
@@ -211,52 +211,52 @@ const links = [
     <div class="mb-12">
       <div class="flex items-baseline gap-3 mb-1">
         <h3 class="text-xl text-white">v1.1.0</h3>
-        <span class="px-2 py-0.5 text-xs rounded-sm bg-brand-blue/20 text-brand-blue-light">Latest</span>
+        <span class="px-2 py-0.5 text-xs rounded-sm bg-accent/20 text-accent-light">Latest</span>
       </div>
       <p class="text-gray-500 text-xs uppercase tracking-widest mb-5">June 16, 2026</p>
 
-      <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Added</p>
+      <p class="text-accent-light text-xs uppercase tracking-widest mb-2">Added</p>
       <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
-        <li><strong class="text-gray-200">Rope sleep system.</strong> A settled rope skips the whole simulation and runs only a cheap watchdog until something disturbs it (a moved node or anchor, changed forces, or a collider entering its bounds). New API: <code class="text-brand-blue-light">sleep_enabled</code>, <code class="text-brand-blue-light">sleep_tolerance</code>, <code class="text-brand-blue-light">sleep_frames</code>, <code class="text-brand-blue-light">sleep_min_awake</code>, <code class="text-brand-blue-light">is_sleeping()</code>, <code class="text-brand-blue-light">wake()</code>, and the <code class="text-brand-blue-light">slept</code> / <code class="text-brand-blue-light">woken</code> signals.</li>
-        <li><strong class="text-gray-200"><code class="text-brand-blue-light">CRopeWorldGravityForceMod</code>.</strong> Zero-config force module that follows the project's 2D gravity every frame, including runtime changes.</li>
+        <li><strong class="text-gray-200">Rope sleep system.</strong> A settled rope skips the whole simulation and runs only a cheap watchdog until something disturbs it (a moved node or anchor, changed forces, or a collider entering its bounds). New API: <code class="text-accent-light">sleep_enabled</code>, <code class="text-accent-light">sleep_tolerance</code>, <code class="text-accent-light">sleep_frames</code>, <code class="text-accent-light">sleep_min_awake</code>, <code class="text-accent-light">is_sleeping()</code>, <code class="text-accent-light">wake()</code>, and the <code class="text-accent-light">slept</code> / <code class="text-accent-light">woken</code> signals.</li>
+        <li><strong class="text-gray-200"><code class="text-accent-light">CRopeWorldGravityForceMod</code>.</strong> Zero-config force module that follows the project's 2D gravity every frame, including runtime changes.</li>
         <li><strong class="text-gray-200">Red-black constraint solver.</strong> Up to 10x faster substeps on long ropes, and now the default. The sequential solver remains available.</li>
-        <li><strong class="text-gray-200">Gradient on <code class="text-brand-blue-light">CRopeDirectRenderMod</code>.</strong> Colors the rope along its length, sampled by arc length.</li>
-        <li><strong class="text-gray-200"><code class="text-brand-blue-light">CRopeData.get_rect()</code>.</strong> Bounding box query for the rope points.</li>
+        <li><strong class="text-gray-200">Gradient on <code class="text-accent-light">CRopeDirectRenderMod</code>.</strong> Colors the rope along its length, sampled by arc length.</li>
+        <li><strong class="text-gray-200"><code class="text-accent-light">CRopeData.get_rect()</code>.</strong> Bounding box query for the rope points.</li>
       </ul>
 
-      <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Changed</p>
+      <p class="text-accent-light text-xs uppercase tracking-widest mb-2">Changed</p>
       <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
         <li><strong class="text-gray-200">Per-second damping.</strong> Frame-rate and substep independent. The default changed from 0.4 to 0.6, so re-tune any explicit damping values.</li>
         <li><strong class="text-gray-200">Red-black is the default solver.</strong> Slightly more elastic at the same iterations; raise iterations or switch to sequential for the old stiffness.</li>
-        <li><strong class="text-gray-200">Debug renderer renames.</strong> <code class="text-brand-blue-light">draw_overlay</code> (was <code class="text-brand-blue-light">draw_debug_overlay</code>) and <code class="text-brand-blue-light">wake_color</code> (was <code class="text-brand-blue-light">debug_overlay_color</code>), plus a new <code class="text-brand-blue-light">sleep_color</code> and an AABB section.</li>
+        <li><strong class="text-gray-200">Debug renderer renames.</strong> <code class="text-accent-light">draw_overlay</code> (was <code class="text-accent-light">draw_debug_overlay</code>) and <code class="text-accent-light">wake_color</code> (was <code class="text-accent-light">debug_overlay_color</code>), plus a new <code class="text-accent-light">sleep_color</code> and an AABB section.</li>
       </ul>
 
-      <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Examples</p>
+      <p class="text-accent-light text-xs uppercase tracking-widest mb-2">Examples</p>
       <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
         <li>Reworked the example project: new showcase scenes (jellyfish, plug the wires, kite, growing sunflowers, firefly meadow, grand curtain), older single-feature scenes removed, everything renumbered (17 scenes total).</li>
       </ul>
 
       <details>
-        <summary class="cursor-pointer text-brand-blue-light hover:text-white text-sm transition-colors">Fixes and performance</summary>
-        <p class="text-brand-blue-light text-xs uppercase tracking-widest mt-5 mb-2">Fixed</p>
+        <summary class="cursor-pointer text-accent-light hover:text-white text-sm transition-colors">Fixes and performance</summary>
+        <p class="text-accent-light text-xs uppercase tracking-widest mt-5 mb-2">Fixed</p>
         <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5 mb-5">
           <li>Crash safety for freed anchor and attractor nodes, and for out-of-range break indices.</li>
-          <li><code class="text-brand-blue-light">simulate()</code> is safe against data mutation from signal handlers and force modules.</li>
+          <li><code class="text-accent-light">simulate()</code> is safe against data mutation from signal handlers and force modules.</li>
           <li>Break modules run on current-frame data, so a break no longer loses a simulation step.</li>
           <li>A rope created over existing data no longer starts with stale velocities.</li>
-          <li><code class="text-brand-blue-light">break_at</code> no longer spawns dead single-point ropes and rejects invalid segments.</li>
+          <li><code class="text-accent-light">break_at</code> no longer spawns dead single-point ropes and rejects invalid segments.</li>
           <li>Anchors with an index outside the rope data are treated as inactive.</li>
           <li>The anchor target node is cached per rope instead of on the shared anchor resource.</li>
           <li>Physics space state is refreshed each frame instead of cached forever.</li>
           <li>The wind time accumulator wraps to the wave period to avoid float precision loss.</li>
-          <li><code class="text-brand-blue-light">create_path_by_count</code> enforces a minimum segment length on degenerate paths.</li>
-          <li>The mesh builder guards zero width, clamps <code class="text-brand-blue-light">tile_aspect</code>, and fixes round-joint preallocation.</li>
-          <li>A warning is emitted when a <code class="text-brand-blue-light">CRope2D</code> enters the tree with an unsupported scale.</li>
+          <li><code class="text-accent-light">create_path_by_count</code> enforces a minimum segment length on degenerate paths.</li>
+          <li>The mesh builder guards zero width, clamps <code class="text-accent-light">tile_aspect</code>, and fixes round-joint preallocation.</li>
+          <li>A warning is emitted when a <code class="text-accent-light">CRope2D</code> enters the tree with an unsupported scale.</li>
         </ul>
-        <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Performance</p>
+        <p class="text-accent-light text-xs uppercase tracking-widest mb-2">Performance</p>
         <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5">
-          <li>Skip the local-to-global transform for unchanged ropes and materialize <code class="text-brand-blue-light">prev_points</code> lazily.</li>
-          <li>Skip rope sections and anchor pull when no <code class="text-brand-blue-light">RigidBody2D</code> consumes them.</li>
+          <li>Skip the local-to-global transform for unchanged ropes and materialize <code class="text-accent-light">prev_points</code> lazily.</li>
+          <li>Skip rope sections and anchor pull when no <code class="text-accent-light">RigidBody2D</code> consumes them.</li>
           <li>Skip pinch detection for points near a single collider.</li>
           <li>Reuse scratch buffers across the line modules and the debug renderer.</li>
           <li>Squared-distance math in simplify and magnet, and raw-pointer geometry writes in the mesh builder.</li>
@@ -268,9 +268,9 @@ const links = [
     <div>
       <h3 class="text-xl text-white mb-1">v1.0.0</h3>
       <p class="text-gray-500 text-xs uppercase tracking-widest mb-5">March 4, 2026</p>
-      <p class="text-brand-blue-light text-xs uppercase tracking-widest mb-2">Added</p>
+      <p class="text-accent-light text-xs uppercase tracking-widest mb-2">Added</p>
       <ul class="text-gray-400 text-sm leading-relaxed space-y-1.5 list-disc pl-5">
-        <li><code class="text-brand-blue-light">CRope2D</code> node: Verlet 2D rope physics with configurable stiffness and damping.</li>
+        <li><code class="text-accent-light">CRope2D</code> node: Verlet 2D rope physics with configurable stiffness and damping.</li>
         <li>Collision support (StaticBody2D, RigidBody2D, CharacterBody2D).</li>
         <li>Anchor system (start, end, both, none).</li>
         <li>Modular architecture with four module types: force, line, render, and break.</li>

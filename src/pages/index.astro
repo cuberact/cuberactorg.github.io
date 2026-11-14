@@ -55,7 +55,7 @@ const latest = [...milestones, ...blogPosts].sort((a, b) => b.date.valueOf() - a
 const fmtDate = (d) => d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 ---
 
-<BaseLayout title="Cuberact">
+<BaseLayout title="Cuberact Games">
   <!-- Hero -->
   <section class="max-w-5xl mx-auto px-4 pt-12 md:pt-16 pb-10 md:pb-12 text-center">
     <img
@@ -71,9 +71,11 @@ const fmtDate = (d) => d.toLocaleDateString("en-US", { year: "numeric", month: "
       alt="CUBERACT"
       width="320"
       height="53"
-      class="mx-auto mb-8"
+      class="mx-auto"
       data-no-zoom
     />
+    <!-- The negative margin takes back the letter spacing after the last letter, so the word stays centred. -->
+    <p class="mt-3 mb-8 -mr-[0.6em] font-heading font-light text-2xl text-accent-light tracking-[0.6em]">GAMES</p>
     <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-4">
       Indie studio making games, tools, and extensions.
     </p>
@@ -108,11 +110,11 @@ const fmtDate = (d) => d.toLocaleDateString("en-US", { year: "numeric", month: "
           )}
           <div class="p-6 flex flex-col flex-1">
             <p class="text-gray-500 text-xs uppercase tracking-widest mb-2">
-              <span class="text-brand-blue-light">{item.type === "blog" ? "Blog" : "News"} &middot; </span>{fmtDate(item.date)}
+              <span class="text-accent-light">{item.type === "blog" ? "Blog" : "News"} &middot; </span>{fmtDate(item.date)}
             </p>
             <div class="flex items-center gap-3 mb-2">
               <h2 class="text-white text-lg">{item.title}</h2>
-              {item.badge && <span class="px-2 py-0.5 text-xs rounded-sm bg-brand-blue/20 text-brand-blue-light shrink-0">{item.badge}</span>}
+              {item.badge && <span class="px-2 py-0.5 text-xs rounded-sm bg-accent/20 text-accent-light shrink-0">{item.badge}</span>}
             </div>
             {item.type === "project" && (
               <div class="flex flex-wrap gap-2 mb-3">
@@ -128,14 +130,14 @@ const fmtDate = (d) => d.toLocaleDateString("en-US", { year: "numeric", month: "
                   {item.demoHref && (
                     <a
                       href={item.demoHref}
-                      class="inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded-sm hover:brightness-110 transition"
+                      class="inline-block px-4 py-2 bg-accent text-white text-xs uppercase tracking-widest rounded-sm hover:brightness-110 transition"
                     >
                       Web demo &rarr;
                     </a>
                   )}
                   <a
                     href={item.pageHref}
-                    class="text-brand-blue-light hover:text-white text-xs uppercase tracking-widest transition-colors self-center"
+                    class="text-accent-light hover:text-white text-xs uppercase tracking-widest transition-colors self-center"
                   >
                     Learn more &rarr;
                   </a>
@@ -143,7 +145,7 @@ const fmtDate = (d) => d.toLocaleDateString("en-US", { year: "numeric", month: "
               ) : (
                 <a
                   href={item.pageHref}
-                  class="text-brand-blue-light hover:text-white text-xs uppercase tracking-widest transition-colors self-center"
+                  class="text-accent-light hover:text-white text-xs uppercase tracking-widest transition-colors self-center"
                 >
                   Read post &rarr;
                 </a>
