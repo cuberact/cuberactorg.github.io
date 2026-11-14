@@ -112,12 +112,12 @@ const fmtDate = (d) => d.toLocaleDateString("en-US", { year: "numeric", month: "
             </p>
             <div class="flex items-center gap-3 mb-2">
               <h2 class="text-white text-lg">{item.title}</h2>
-              {item.badge && <span class="px-2 py-0.5 text-xs rounded bg-brand-blue/20 text-brand-blue-light shrink-0">{item.badge}</span>}
+              {item.badge && <span class="px-2 py-0.5 text-xs rounded-sm bg-brand-blue/20 text-brand-blue-light shrink-0">{item.badge}</span>}
             </div>
             {item.type === "project" && (
               <div class="flex flex-wrap gap-2 mb-3">
                 {item.tags.map((t) => (
-                  <span class="inline-block px-2 py-0.5 text-xs rounded bg-surface-600 text-gray-300">{t}</span>
+                  <span class="inline-block px-2 py-0.5 text-xs rounded-sm bg-surface-600 text-gray-300">{t}</span>
                 ))}
               </div>
             )}
@@ -128,7 +128,7 @@ const fmtDate = (d) => d.toLocaleDateString("en-US", { year: "numeric", month: "
                   {item.demoHref && (
                     <a
                       href={item.demoHref}
-                      class="inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded hover:brightness-110 transition"
+                      class="inline-block px-4 py-2 bg-brand-blue text-white text-xs uppercase tracking-widest rounded-sm hover:brightness-110 transition"
                     >
                       Web demo &rarr;
                     </a>

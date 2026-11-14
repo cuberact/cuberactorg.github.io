@@ -23,7 +23,7 @@ const links = [
         alt="Michal Nikodím"
         width="160"
         height="160"
-        class="rounded-full border-2 border-surface-600 object-cover w-40 h-40 flex-shrink-0"
+        class="rounded-full border-2 border-surface-600 object-cover w-40 h-40 shrink-0"
       />
       <div>
         <h1 class="text-3xl md:text-4xl text-white mb-2">Michal Nikodím <span class="text-gray-500 font-light">aka NkD</span></h1>
@@ -67,7 +67,7 @@ const links = [
           <a
             href={l.href}
             class:list={[
-              'inline-flex items-center gap-2 px-4 py-2 rounded text-sm transition',
+              'inline-flex items-center gap-2 px-4 py-2 rounded-sm text-sm transition',
               l.primary
                 ? 'bg-brand-blue text-white hover:brightness-110'
                 : 'bg-surface-800 border border-surface-600 text-gray-300 hover:border-brand-blue-light hover:text-white',

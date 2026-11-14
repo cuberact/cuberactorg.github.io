@@ -23,6 +23,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- The heading font for the first paint (font-display: optional in global.css). -->
+    <link rel="preload" href="/fonts/Raleway-Light.ttf" as="font" type="font/ttf" crossorigin />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL('/images/cuberact-dark.png', Astro.site)} />

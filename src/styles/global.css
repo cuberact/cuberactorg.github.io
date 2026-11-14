@@ -1,13 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-brand-pink: #ff0066;
+  --color-brand-blue: #0077ff;
+  --color-brand-blue-light: #6699ff;
+  --color-brand-blue-dark: #0d47a1;
+
+  --color-surface-600: #24243e;
+  --color-surface-700: #1a1a2e;
+  --color-surface-800: #141425;
+  --color-surface-900: #0d0d1a;
+
+  --font-heading: 'Raleway', sans-serif;
+}
 
 @font-face {
   font-family: 'Raleway';
   src: url('/fonts/Raleway-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
-  font-display: swap;
+  /* optional, with the preload in BaseLayout: the font is there for the first paint or not used on that page,
+     never swapped in later, which would move the text beside it. */
+  font-display: optional;
 }
 
 @layer base {
@@ -34,10 +50,6 @@
     color: #ffffff;
   }
 
-  .prose a:not(.not-prose *) {
-    @apply text-brand-blue-light hover:text-white;
-  }
-
   /* The lightbox script adds .zoomable only to images it would show meaningfully
      bigger than they already are (so a full-width image on a phone stays inert).
      Those images are clickable and brighten on hover. */
@@ -54,4 +66,9 @@
   main a img:not(.zoomable) {
     cursor: default;
   }
+}
+
+/* Outside the layers, so it wins over the typography plugin's link color. */
+.prose a:not(.not-prose *) {
+  @apply text-brand-blue-light hover:text-white;
 }

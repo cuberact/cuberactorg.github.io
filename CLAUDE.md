@@ -2,7 +2,7 @@
 
 ## About
 
-**www.cuberact.org** - Main Cuberact website. Astro 5.18 + Tailwind CSS + @astrojs/sitemap, deployed via GitHub Pages.
+**www.cuberact.org** - Main Cuberact website. Astro 7.4 + Tailwind 4 (`@tailwindcss/vite`, theme in `@theme` in `src/styles/global.css`) + @astrojs/sitemap, deployed via GitHub Pages. `compressHTML: true` in `astro.config.mjs` keeps Astro 5's whitespace: Astro 7's default drops the space where a line break joins two words.
 
 ## Structure
 
@@ -40,4 +40,4 @@ BaseLayout.astro includes: Open Graph meta tags (og:title, og:description, og:im
 
 - `npm run dev` - local dev server on port 4321
 - `npm run build` - production build to `dist/`
-- Deployment: push to `main` -> GitHub Actions -> GitHub Pages
+- Deployment: push to `master` -> GitHub Actions -> GitHub Pages, straight to the live site (no preview)
