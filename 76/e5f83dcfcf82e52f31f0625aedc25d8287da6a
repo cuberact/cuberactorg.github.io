@@ -1,0 +1,20 @@
+src/data/socials.ts
+  s_09e9ca1160e045::t_4a01b62cf422d4 26
+  s_09e9ca1160e045::t_dd498aeadf9ca5 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "76e5f83dcfcf82e52f31f0625aedc25d8287da6a",
+  "prompts": {},
+  "sessions": {
+    "s_09e9ca1160e045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a5d5ce8-bcf8-48b6-9fa2-da99bafd1b0c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "NkD <michal.nikodim@gmail.com>"
+    }
+  }
+}
