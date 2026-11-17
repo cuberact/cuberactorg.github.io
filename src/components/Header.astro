@@ -24,7 +24,7 @@ const currentPath = Astro.url.pathname;
 
     <!-- Desktop nav -->
     <div class="hidden md:flex items-center gap-8">
-      <ul class="flex gap-8">
+      <ul class="flex items-center gap-8">
         {navLinks.map(({ href, label }) => (
           <li>
             <a
@@ -41,7 +41,7 @@ const currentPath = Astro.url.pathname;
           </li>
         ))}
         <li>
-          <a href={appsLink.href} title={appsLink.title} class="text-sm uppercase tracking-widest text-gray-400 hover:text-white transition-colors">
+          <a href={appsLink.href} title={appsLink.title} class="block px-3 py-1 text-sm uppercase tracking-widest text-apps-light border border-apps rounded-sm hover:bg-apps hover:text-white transition-colors">
             {appsLink.label}
           </a>
         </li>
@@ -86,7 +86,7 @@ const currentPath = Astro.url.pathname;
         </li>
       ))}
       <li>
-        <a href={appsLink.href} title={appsLink.title} class="block py-2 text-sm uppercase tracking-widest text-gray-400 hover:text-white">
+        <a href={appsLink.href} title={appsLink.title} class="inline-block mt-2 px-3 py-1 text-sm uppercase tracking-widest text-apps-light border border-apps rounded-sm hover:bg-apps hover:text-white transition-colors">
           {appsLink.label}
         </a>
       </li>

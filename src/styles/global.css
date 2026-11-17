@@ -7,6 +7,10 @@
   --color-accent: #e6005c;
   --color-accent-light: #ff5c99;
 
+  /* www.cuberact.com's blue, for the header's Apps link alone: it leads there. */
+  --color-apps: #0077ff;
+  --color-apps-light: #6699ff;
+
   --color-surface-600: #35202f;
   --color-surface-700: #281626;
   --color-surface-800: #1d1019;
