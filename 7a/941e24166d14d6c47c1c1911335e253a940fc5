@@ -1,0 +1,25 @@
+CLAUDE.md
+  s_09e9ca1160e045::t_47de24b473eec1 24
+src/styles/global.css
+  s_09e9ca1160e045::t_1e03cb6aff3ec5 10-13
+src/components/Header.astro
+  s_09e9ca1160e045::t_4fff4a4403c66a 89
+  s_09e9ca1160e045::t_7940d274722c83 27
+  s_09e9ca1160e045::t_daf28ee945a4a6 44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7a941e24166d14d6c47c1c1911335e253a940fc5",
+  "prompts": {},
+  "sessions": {
+    "s_09e9ca1160e045": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9a5d5ce8-bcf8-48b6-9fa2-da99bafd1b0c",
+        "model": "unknown"
+      },
+      "human_author": "NkD <michal.nikodim@gmail.com>"
+    }
+  }
+}
